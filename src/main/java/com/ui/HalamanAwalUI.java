@@ -48,17 +48,18 @@ public class HalamanAwalUI {
         loginButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                
+                // MemeriksaData()
+                // checkData()
+                // verifikasiAkun()
+                // TampilkanHalamanUtama()
             }
         });
 
         forgotPasswordButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // MemeriksaData()
-                // checkData()
-                // verifikasiAkun()
-                // TampilkanPasswordLama()
+                // TampilkanHalamanLupaPassword()
+                // tampilkanPasswordLama()
             }
         });
     }

@@ -14,8 +14,8 @@ public class HalamanLoginUI {
         this.registerLogin = registerLogin;
 
         // Membuat frame untuk login
-        JFrame frame = new JFrame("Login GEZ");
-        frame.setSize(1366, 768);
+        JFrame frame = new JFrame("Login Pengguna");
+        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(null);
         frame.getContentPane().setBackground(Color.GREEN);

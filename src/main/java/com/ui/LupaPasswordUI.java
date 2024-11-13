@@ -14,7 +14,7 @@ public class LupaPasswordUI {
 
         // Membuat frame untuk lupa password
         JFrame frame = new JFrame("Lupa Password");
-        frame.setSize(300, 250);
+        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(null);
 

@@ -3,6 +3,7 @@ package src.main.java.com.ui;
 import src.main.java.com.models.RegisterLogin;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -13,10 +14,11 @@ public class HalamanLoginUI {
         this.registerLogin = registerLogin;
 
         // Membuat frame untuk login
-        JFrame frame = new JFrame("Login Pengguna");
-        frame.setSize(300, 200);
+        JFrame frame = new JFrame("Login GEZ");
+        frame.setSize(1366, 768);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(null);
+        frame.getContentPane().setBackground(Color.GREEN);
 
         // Komponen
         JLabel labelUsername = new JLabel("Username:");

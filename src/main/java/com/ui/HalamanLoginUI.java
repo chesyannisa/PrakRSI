@@ -15,7 +15,7 @@ public class HalamanLoginUI {
         this.registerLogin = registerLogin;
 
         // Membuat frame untuk login
-        JFrame frame = new JFrame("Login Pengguna");
+        JFrame frame = new JFrame("ResikinAE: Login");
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(null);

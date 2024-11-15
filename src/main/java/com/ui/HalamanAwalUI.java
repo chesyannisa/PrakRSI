@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 
 public class HalamanAwalUI {
         public HalamanAwalUI() {
-            JFrame frame = new JFrame("Halaman Awal");
+            JFrame frame = new JFrame("ResikinAE");
             frame.setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS));
             frame.setLayout(new BorderLayout());
             frame.setExtendedState(JFrame.MAXIMIZED_BOTH);

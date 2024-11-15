@@ -19,7 +19,7 @@ public class HalamanLoginUI {
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(null);
-        frame.getContentPane().setBackground(Color.GREEN);
+        frame.getContentPane().setBackground(new Color(166,179,125));
 
         // Komponen
         JLabel labelUsername = new JLabel("Username:");

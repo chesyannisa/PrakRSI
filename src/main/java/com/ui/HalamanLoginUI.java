@@ -19,7 +19,7 @@ public class HalamanLoginUI {
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(null);
-        frame.getContentPane().setBackground(new Color(166,179,125));
+        frame.getContentPane().setBackground(Color.LIGHT_GRAY);
 
         // Komponen
         JLabel labelUsername = new JLabel("Username:");
@@ -39,11 +39,17 @@ public class HalamanLoginUI {
         frame.add(passwordField);
 
         JButton loginButton = new JButton("Login");
+        loginButton.setForeground(Color.WHITE);
+        loginButton.setFont(new Font("Nunito", Font.PLAIN, 12));
         loginButton.setBounds(10, 80, 80, 25);
+        loginButton.setBackground(new Color(166, 179, 125));
         frame.add(loginButton);
 
         JButton forgotPasswordButton = new JButton("Lupa Password");
+        forgotPasswordButton.setForeground(Color.WHITE);
+        forgotPasswordButton.setFont(new Font("Nunito", Font.PLAIN, 12));
         forgotPasswordButton.setBounds(100, 80, 150, 25);
+        forgotPasswordButton.setBackground(new Color(166, 179, 125));
         frame.add(forgotPasswordButton);
 
         // Aksi tombol Login

@@ -3,6 +3,8 @@ package src.main.java.com.ui;
 import src.main.java.com.models.RegisterLogin;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
 
@@ -45,6 +47,9 @@ public class LupaPasswordUI {
 
         JButton verifyButton = new JButton("Verifikasi");
         verifyButton.setBounds(10, 140, 120, 25);
+        verifyButton.setBackground(new Color(166, 179, 125));
+        verifyButton.setFont(new Font("Nunito", Font.PLAIN, 12));
+        verifyButton.setForeground(Color.WHITE);
         frame.add(verifyButton);
 
         // Aksi tombol Verifikasi

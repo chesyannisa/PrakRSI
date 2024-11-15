@@ -19,7 +19,7 @@ public class HalamanAwalUI {
 
             //"C:\Users\HP\Pictures\RSI5\logo.png"
             JButton registerButton = new JButton("Register");
-            registerButton.setBackground(new Color(170,179,150)); // Warna latar belakang tombol
+            registerButton.setBackground(new Color(166, 179, 125)); // Warna latar belakang tombol
             registerButton.setForeground(Color.WHITE); // Warna teks tombol
             registerButton.setFont(new Font("Nunito", Font.BOLD, 16)); // Font tombol
             registerButton.addActionListener(new ActionListener() {
@@ -30,7 +30,7 @@ public class HalamanAwalUI {
             });
 
             JButton loginButton = new JButton("Login");
-            loginButton.setBackground(new Color(170,179,150)); // Warna latar belakang tombol
+            loginButton.setBackground(new Color(166, 179, 125)); // Warna latar belakang tombol
             loginButton.setForeground(Color.WHITE); // Warna teks tombol
             loginButton.setFont(new Font("Nunito", Font.BOLD, 16)); // Font tombol
             loginButton.addActionListener(new ActionListener() {

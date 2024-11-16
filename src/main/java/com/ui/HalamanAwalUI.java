@@ -13,12 +13,11 @@ public class HalamanAwalUI {
             frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-            JLabel imageLabel = new JLabel(new ImageIcon("C:/Users/HP/Pictures/RSI5/logo.png"));
+            JLabel imageLabel = new JLabel(new ImageIcon("logo.png"));
             imageLabel.setHorizontalAlignment(SwingConstants.CENTER); // Gambar di tengah
             imageLabel.setVerticalAlignment(SwingConstants.CENTER);
 
-            //"C:\Users\HP\Pictures\RSI5\logo.png"
-            JButton registerButton = new JButton("Register");
+            RoundedButton registerButton = new RoundedButton("Register", 30);
             registerButton.setBackground(new Color(166, 179, 125)); // Warna latar belakang tombol
             registerButton.setForeground(Color.WHITE); // Warna teks tombol
             registerButton.setFont(new Font("Nunito", Font.BOLD, 16)); // Font tombol
@@ -29,7 +28,7 @@ public class HalamanAwalUI {
             }
             });
 
-            JButton loginButton = new JButton("Login");
+            RoundedButton loginButton = new RoundedButton("Login", 30);
             loginButton.setBackground(new Color(166, 179, 125)); // Warna latar belakang tombol
             loginButton.setForeground(Color.WHITE); // Warna teks tombol
             loginButton.setFont(new Font("Nunito", Font.BOLD, 16)); // Font tombol

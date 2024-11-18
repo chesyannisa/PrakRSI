@@ -62,7 +62,7 @@ public class HalamanLoginUI {
         gbc.anchor = GridBagConstraints.WEST;
         JButton forgotPasswordButton = new JButton("Lupa Sandi?");
         forgotPasswordButton.setForeground(new Color(166, 179, 125));
-        forgotPasswordButton.setContentAreaFilled(true);
+        forgotPasswordButton.setContentAreaFilled(false);
         forgotPasswordButton.setBorderPainted(false);
         forgotPasswordButton.setFocusPainted(false);
         forgotPasswordButton.setFont(new Font("Nunito", Font.BOLD, 12));

@@ -52,6 +52,14 @@ public class LupaPasswordUI {
         verifyButton.setForeground(Color.WHITE);
         frame.add(verifyButton);
 
+        JButton backButton = new JButton("Back");
+        backButton.setBounds(10, 180, 120, 25);
+        backButton.setBackground(new Color(166, 179, 125));
+        backButton.setFont(new Font("Nunito", Font.PLAIN, 12));
+        backButton.setForeground(Color.WHITE);
+        frame.add(backButton);
+
+
         // Aksi tombol Verifikasi
         verifyButton.addActionListener(new ActionListener() {
             @Override
@@ -70,7 +78,17 @@ public class LupaPasswordUI {
             }
             }
         });
+        
+        //Aksi tombol Back
+        backButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new HalamanLoginUI(registerLogin); // Kembali ke halaman login
+                frame.dispose(); // Menutup frame saat ini
+            }
+        });
 
         frame.setVisible(true);
     }
 }
+

@@ -41,14 +41,14 @@ public class HalamanAwalUI {
             }
             });
             JPanel buttonPanel = new JPanel();
-            buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 0)); // Posisi tengah dengan jarak antar tombol
+            buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 10)); // Posisi tengah dengan jarak antar tombol
             buttonPanel.setBackground(Color.WHITE); // Warna latar belakang panel
             buttonPanel.add(Box.createRigidArea(new Dimension(0, 200))); // Jarak sebelum tombol pertama
             buttonPanel.add(registerButton);
             buttonPanel.add(Box.createRigidArea(new Dimension(0, 200))); // Jarak antara tombol
             buttonPanel.add(loginButton);
 
-
+            
             JLabel titleLabel = new JLabel("Selamat Datang!", SwingConstants.CENTER);
             titleLabel.setFont(new Font("Nunito", Font.BOLD, 20));
             titleLabel.setForeground(new Color(166, 179, 125));
@@ -56,7 +56,7 @@ public class HalamanAwalUI {
 
             // Add buttons to the frame
             frame.add(imageLabel, BorderLayout.NORTH);
-            frame.add(titleLabel);
+            frame.add(titleLabel, BorderLayout.CENTER);
             frame.add(buttonPanel, BorderLayout.CENTER);
 
 

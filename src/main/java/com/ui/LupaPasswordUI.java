@@ -7,6 +7,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 
 public class LupaPasswordUI {
     public RegisterLogin registerLogin;
@@ -73,7 +74,7 @@ public class LupaPasswordUI {
                 // Panggil metode lupaPassword di RegisterLogin
                 registerLogin.lupaPassword(namaLengkap, tglLahir, namaIbu);
                 frame.dispose(); // Menutup frame lupa password
-            }   catch (Exception ex) {
+            } catch (DateTimeParseException ex) {
                 JOptionPane.showMessageDialog(frame, "Format tanggal tidak valid. Harap gunakan format yyyy-MM-dd.");
             }
             }

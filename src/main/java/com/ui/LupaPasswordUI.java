@@ -2,9 +2,8 @@ package src.main.java.com.ui;
 
 import src.main.java.com.models.RegisterLogin;
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.Color;
-import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
@@ -12,75 +11,96 @@ import java.time.format.DateTimeParseException;
 public class LupaPasswordUI {
     public RegisterLogin registerLogin;
 
-    public LupaPasswordUI (RegisterLogin registerLogin) {
+    public LupaPasswordUI(RegisterLogin registerLogin) {
         this.registerLogin = registerLogin;
 
         // Membuat frame untuk lupa password
         JFrame frame = new JFrame("Lupa Password");
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setLayout(null);
 
-        // Komponen
+        // Panel utama dengan GridBagLayout
+        JPanel panel = new JPanel(new GridBagLayout());
+        panel.setBackground(new Color(225, 235, 215)); // Warna latar belakang
+
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.insets = new Insets(10, 10, 10, 10); // Margin antar komponen
+        gbc.fill = GridBagConstraints.HORIZONTAL; // Komponen memenuhi lebar sel
+        gbc.anchor = GridBagConstraints.CENTER;
+
+        // Komponen Form
         JLabel labelNamaLengkap = new JLabel("Nama Lengkap:");
-        labelNamaLengkap.setBounds(10, 20, 120, 25);
-        frame.add(labelNamaLengkap);
+        labelNamaLengkap.setFont(new Font("Nunito", Font.BOLD, 14));
+        gbc.gridx = 0; // Kolom pertama
+        gbc.gridy = 0; // Baris pertama
+        panel.add(labelNamaLengkap, gbc);
 
-        JTextField namaField = new JTextField();
-        namaField.setBounds(130, 20, 150, 25);
-        frame.add(namaField);
+        JTextField namaField = new JTextField(20);
+        gbc.gridx = 1; // Kolom kedua
+        gbc.gridy = 0; // Baris pertama
+        panel.add(namaField, gbc);
 
-        JLabel labelTglLahir = new JLabel("Tanggal Lahir:");
-        labelTglLahir.setBounds(10, 60, 120, 25);
-        frame.add(labelTglLahir);
+        JLabel labelTglLahir = new JLabel("Tanggal Lahir (yyyy-MM-dd):");
+        labelTglLahir.setFont(new Font("Nunito", Font.BOLD, 14));
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        panel.add(labelTglLahir, gbc);
 
-        JTextField tglLahirField = new JTextField();
-        tglLahirField.setBounds(130, 60, 150, 25);
-        frame.add(tglLahirField);
+        JTextField tglLahirField = new JTextField(20);
+        gbc.gridx = 1;
+        gbc.gridy = 1;
+        panel.add(tglLahirField, gbc);
 
         JLabel labelNamaIbu = new JLabel("Nama Ibu:");
-        labelNamaIbu.setBounds(10, 100, 120, 25);
-        frame.add(labelNamaIbu);
+        labelNamaIbu.setFont(new Font("Nunito", Font.BOLD, 14));
+        gbc.gridx = 0;
+        gbc.gridy = 2;
+        panel.add(labelNamaIbu, gbc);
 
-        JTextField namaIbuField = new JTextField();
-        namaIbuField.setBounds(130, 100, 150, 25);
-        frame.add(namaIbuField);
+        JTextField namaIbuField = new JTextField(20);
+        gbc.gridx = 1;
+        gbc.gridy = 2;
+        panel.add(namaIbuField, gbc);
 
         JButton verifyButton = new JButton("Verifikasi");
-        verifyButton.setBounds(10, 140, 120, 25);
         verifyButton.setBackground(new Color(166, 179, 125));
         verifyButton.setFont(new Font("Nunito", Font.PLAIN, 12));
         verifyButton.setForeground(Color.WHITE);
-        frame.add(verifyButton);
+        gbc.gridx = 0;
+        gbc.gridy = 3;
+        panel.add(verifyButton, gbc);
 
         JButton backButton = new JButton("Back");
-        backButton.setBounds(10, 180, 120, 25);
         backButton.setBackground(new Color(166, 179, 125));
         backButton.setFont(new Font("Nunito", Font.PLAIN, 12));
         backButton.setForeground(Color.WHITE);
-        frame.add(backButton);
+        gbc.gridx = 1;
+        gbc.gridy = 3;
+        panel.add(backButton, gbc);
 
+        // Tambahkan panel ke frame
+        frame.add(panel);
 
         // Aksi tombol Verifikasi
         verifyButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                try{
-                String namaLengkap = namaField.getText();
-                String tglLahirInput = tglLahirField.getText();
-                LocalDate tglLahir = LocalDate.parse(tglLahirInput); // Parsing tanggal
-                String namaIbu = namaIbuField.getText();
+                try {
+                    String namaLengkap = namaField.getText();
+                    String tglLahirInput = tglLahirField.getText();
+                    LocalDate tglLahir = LocalDate.parse(tglLahirInput); // Parsing tanggal
+                    String namaIbu = namaIbuField.getText();
 
-                // Panggil metode lupaPassword di RegisterLogin
-                registerLogin.lupaPassword(namaLengkap, tglLahir, namaIbu);
-                frame.dispose(); // Menutup frame lupa password
-            } catch (DateTimeParseException ex) {
-                JOptionPane.showMessageDialog(frame, "Format tanggal tidak valid. Harap gunakan format yyyy-MM-dd.");
-            }
+                    // Panggil metode lupaPassword di RegisterLogin
+                    registerLogin.lupaPassword(namaLengkap, tglLahir, namaIbu);
+                    frame.dispose(); // Menutup frame lupa password
+                } catch (DateTimeParseException ex) {
+                    JOptionPane.showMessageDialog(frame, "Format tanggal tidak valid. Harap gunakan format yyyy-MM-dd.");
+                }
             }
         });
-        
-        //Aksi tombol Back
+
+        // Aksi tombol Back
         backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -89,7 +109,7 @@ public class LupaPasswordUI {
             }
         });
 
+        // Atur ukuran dan tampilkan frame
         frame.setVisible(true);
     }
 }
-

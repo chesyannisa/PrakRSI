@@ -1,7 +1,6 @@
 package src.main.java.com.ui;
 
 import src.main.java.com.models.RegisterLogin;
-import src.main.java.com.ui.LupaPasswordUI;
 
 import javax.swing.*;
 import java.awt.*;

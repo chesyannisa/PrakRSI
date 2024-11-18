@@ -5,6 +5,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+
 public class HalamanUtamaUI {
 
     public HalamanUtamaUI() {
@@ -54,35 +55,35 @@ public class HalamanUtamaUI {
         buttonPanel.setBackground(new Color(203, 215, 176));
 
         // Tombol Tips & Trik
-        RoundedButton tipsButton = createFeatureButton("Tips & Trik", "src\\main\\resources\\tipsntrik.png");
+        JButton tipsButton = createImageButton("src\\main\\resources\\tipsntrik.png",100,100);
         tipsButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                // Navigasi ke halaman Tips & Trik
-                System.out.println("Tips & Trik button clicked");
-            }
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            System.out.println("Tips & Trik button clicked");
+        }
         });
 
-        // Tombol Jadwal
-        RoundedButton scheduleButton = createFeatureButton("Jadwal", "src\\main\\resources\\jadwal.png");
+        JButton scheduleButton = createImageButton("src\\main\\resources\\jadwal.png",100,100);
         scheduleButton.addActionListener(new ActionListener() {
+            @Override
             public void actionPerformed(ActionEvent e) {
-                // Navigasi ke halaman Jadwal
                 System.out.println("Jadwal button clicked");
             }
         });
 
+
         // Tombol Profil
-        RoundedButton profileButton = createFeatureButton("Profil", "src\\main\\resources\\profil.png");
+        JButton profileButton = createImageButton("src\\main\\resources\\profil.png",100, 100);
         profileButton.addActionListener(new ActionListener() {
+            @Override
             public void actionPerformed(ActionEvent e) {
-                // Navigasi ke halaman Profil
                 System.out.println("Profil button clicked");
             }
         });
 
         // Menambahkan tombol ke panel
-        buttonPanel.add(tipsButton);
         buttonPanel.add(scheduleButton);
+        buttonPanel.add(tipsButton);
         buttonPanel.add(profileButton);
 
         // Menambahkan elemen ke bottomPanel
@@ -100,19 +101,20 @@ public class HalamanUtamaUI {
     }
 
     // Membuat tombol fitur dengan ikon
-    private RoundedButton createFeatureButton(String text, String iconPath) {
-        RoundedButton button = new RoundedButton(text, 30);
+    
+
+    private JButton createImageButton(String iconPath, int width, int height) {
+        ImageIcon originalIcon = new ImageIcon(iconPath); // Muat gambar asli
+        Image scaledImage = originalIcon.getImage().getScaledInstance(width, height, Image.SCALE_SMOOTH); // Ubah ukuran gambar
+        ImageIcon scaledIcon = new ImageIcon(scaledImage); // Buat ikon baru dari gambar yang sudah diubah ukurannya
+    
+        JButton button = new JButton(scaledIcon); // Gunakan ikon baru untuk tombol
+        button.setBorderPainted(false); // Menghapus border tombol
         button.setBackground(Color.WHITE);
-        button.setForeground(new Color(83, 53, 74));
-        button.setFont(new Font("Nunito", Font.BOLD, 16));
-        button.setFocusPainted(false);
-        button.setIcon(new ImageIcon(iconPath)); // Tambahkan ikon
-        button.setHorizontalTextPosition(SwingConstants.CENTER); // Teks di bawah ikon
-        button.setVerticalTextPosition(SwingConstants.BOTTOM); // Teks di bawah ikon
-        button.setPreferredSize(new Dimension(150, 150)); // Ukuran tombol
+        button.setFocusPainted(true); // Menghapus highlight ketika tombol dipilih
+        button.setPreferredSize(new Dimension(width, height)); // Atur ukuran tombol sesuai gambar
         return button;
     }
-
     public static void main(String[] args) {
         new HalamanUtamaUI();
     }

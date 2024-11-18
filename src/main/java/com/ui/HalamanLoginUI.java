@@ -95,15 +95,6 @@ public class HalamanLoginUI {
         frame.add(footerPanel, BorderLayout.SOUTH);
         
 
-        // Action listeners
-
-        JButton backButton = new JButton("Back");
-        backButton.setForeground(Color.WHITE);
-        backButton.setFont(new Font("Nunito", Font.PLAIN, 12));
-        backButton.setBounds(10, 120, 80, 25);
-        backButton.setBackground(new Color(166, 179, 125));
-        frame.add(backButton);
-
         // Aksi tombol Login
 
         loginButton.addActionListener(new ActionListener() {
@@ -131,14 +122,6 @@ public class HalamanLoginUI {
             }
         });
 
-        // Aksi tombol Back
-        backButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                new HalamanAwalUI(); // Kembali ke halaman awal
-                frame.dispose(); // Menutup frame saat ini
-            }
-        });
 
         frame.setVisible(true);
     }

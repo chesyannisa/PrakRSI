@@ -13,7 +13,7 @@ public class HalamanAwalUI {
             frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-            JLabel imageLabel = new JLabel(new ImageIcon("logo.png"));
+            JLabel imageLabel = new JLabel(new ImageIcon("src\\main\\resources\\logo.png"));
             imageLabel.setForeground(Color.WHITE);
             imageLabel.setHorizontalAlignment(SwingConstants.CENTER); // Gambar di tengah
             imageLabel.setVerticalAlignment(SwingConstants.CENTER);

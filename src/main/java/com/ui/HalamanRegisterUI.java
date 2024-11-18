@@ -36,7 +36,7 @@ public class HalamanRegisterUI extends JFrame {
         registerLogin = new RegisterLogin();
 
         // Gambar di bagian atas
-        ImageIcon originalIcon = new ImageIcon("logo.png"); 
+        ImageIcon originalIcon = new ImageIcon("src\\main\\resources\\logo.png"); 
         Image scaledImage = originalIcon.getImage().getScaledInstance(230, 150, Image.SCALE_SMOOTH);
         JLabel imageLabel = new JLabel(new ImageIcon(scaledImage), SwingConstants.CENTER);
         add(imageLabel, BorderLayout.NORTH);

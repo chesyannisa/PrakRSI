@@ -31,6 +31,8 @@ public class HalamanUtamaUI {
         titleLabel.setForeground(new Color(83, 53, 74)); // Warna judul
         titleLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
 
+
+
         topPanel.add(Box.createRigidArea(new Dimension(0, 30))); // Jarak
         topPanel.add(titleLabel);
         topPanel.add(Box.createRigidArea(new Dimension(0, 20))); // Jarak
@@ -46,28 +48,42 @@ public class HalamanUtamaUI {
         instructionLabel.setForeground(new Color(83, 53, 74));
         instructionLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        // Panel untuk tombol fitur dan label
+        // Panel untuk tombol fitur
         JPanel buttonPanel = new JPanel();
-        buttonPanel.setLayout(new GridLayout(2, 3, 30, 10)); // 2 baris (ikon dan label), 3 kolom
+        buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 30, 30)); // Posisi tombol di tengah dengan jarak
         buttonPanel.setBackground(new Color(203, 215, 176));
 
         // Tombol Tips & Trik
-        RoundedButton tipsButton = createRoundedIconButton("src\\main\\resources\\tipsntrik.png");
-        JLabel tipsLabel = createFeatureLabel("Tips & Trik");
-        buttonPanel.add(tipsButton);
-        buttonPanel.add(tipsLabel);
+        RoundedButton tipsButton = createFeatureButton("Tips & Trik", "src\\main\\resources\\tipsntrik.png");
+        tipsButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                // Navigasi ke halaman Tips & Trik
+                System.out.println("Tips & Trik button clicked");
+            }
+        });
 
         // Tombol Jadwal
-        RoundedButton scheduleButton = createRoundedIconButton("src\\main\\resources\\jadwal.png");
-        JLabel scheduleLabel = createFeatureLabel("Jadwal");
-        buttonPanel.add(scheduleButton);
-        buttonPanel.add(scheduleLabel);
+        RoundedButton scheduleButton = createFeatureButton("Jadwal", "src\\main\\resources\\jadwal.png");
+        scheduleButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                // Navigasi ke halaman Jadwal
+                System.out.println("Jadwal button clicked");
+            }
+        });
 
         // Tombol Profil
-        RoundedButton profileButton = createRoundedIconButton("src\\main\\resources\\profil.png");
-        JLabel profileLabel = createFeatureLabel("Profil");
+        RoundedButton profileButton = createFeatureButton("Profil", "src\\main\\resources\\profil.png");
+        profileButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                // Navigasi ke halaman Profil
+                System.out.println("Profil button clicked");
+            }
+        });
+
+        // Menambahkan tombol ke panel
+        buttonPanel.add(tipsButton);
+        buttonPanel.add(scheduleButton);
         buttonPanel.add(profileButton);
-        buttonPanel.add(profileLabel);
 
         // Menambahkan elemen ke bottomPanel
         bottomPanel.add(Box.createRigidArea(new Dimension(0, 20)));
@@ -83,24 +99,18 @@ public class HalamanUtamaUI {
         frame.setVisible(true);
     }
 
-    // Membuat tombol rounded hanya dengan ikon
-    private RoundedButton createRoundedIconButton(String iconPath) {
-        RoundedButton button = new RoundedButton("", 30); // Tombol tanpa teks
+    // Membuat tombol fitur dengan ikon
+    private RoundedButton createFeatureButton(String text, String iconPath) {
+        RoundedButton button = new RoundedButton(text, 30);
         button.setBackground(Color.WHITE);
+        button.setForeground(new Color(83, 53, 74));
+        button.setFont(new Font("Nunito", Font.BOLD, 16));
         button.setFocusPainted(false);
-        button.setBorderPainted(false);
         button.setIcon(new ImageIcon(iconPath)); // Tambahkan ikon
-        button.setPreferredSize(new Dimension(100, 100)); // Ukuran tombol
+        button.setHorizontalTextPosition(SwingConstants.CENTER); // Teks di bawah ikon
+        button.setVerticalTextPosition(SwingConstants.BOTTOM); // Teks di bawah ikon
+        button.setPreferredSize(new Dimension(150, 150)); // Ukuran tombol
         return button;
-    }
-
-    // Membuat label untuk teks di bawah tombol
-    private JLabel createFeatureLabel(String text) {
-        JLabel label = new JLabel(text);
-        label.setFont(new Font("Nunito", Font.BOLD, 16));
-        label.setForeground(new Color(83, 53, 74));
-        label.setHorizontalAlignment(SwingConstants.CENTER); // Tengah
-        return label;
     }
 
     public static void main(String[] args) {

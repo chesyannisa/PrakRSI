@@ -9,7 +9,7 @@ import src.main.java.com.models.User;
 
 public class RegisterController {
     public void tampilkanHalamanRegister() {
-        HalamanRegisterUI halamanRegisterUI = new HalamanRegisterUI();
+        new HalamanRegisterUI();
     }
     public void InsertData(String namaLengkap, LocalDate tglLahir, String namaIbu, String username, String password, String roleUser) {
         UserProvider userProvider = new UserProvider();

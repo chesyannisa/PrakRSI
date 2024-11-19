@@ -146,7 +146,7 @@ public class HalamanRegisterUI extends JFrame {
 
         loginButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                HalamanLoginUI halamanLoginUI = new HalamanLoginUI(null);
+                new HalamanLoginUI(null);
                 dispose();
             }
             });

@@ -1,6 +1,5 @@
 package src.main.java.com.ui;
 
-import javax.security.auth.login.LoginContext;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;

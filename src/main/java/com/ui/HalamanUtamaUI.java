@@ -5,7 +5,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-
 public class HalamanUtamaUI {
 
     public HalamanUtamaUI() {
@@ -32,8 +31,6 @@ public class HalamanUtamaUI {
         titleLabel.setForeground(new Color(83, 53, 74)); // Warna judul
         titleLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-
-
         topPanel.add(Box.createRigidArea(new Dimension(0, 30))); // Jarak
         topPanel.add(titleLabel);
         topPanel.add(Box.createRigidArea(new Dimension(0, 20))); // Jarak
@@ -51,40 +48,14 @@ public class HalamanUtamaUI {
 
         // Panel untuk tombol fitur
         JPanel buttonPanel = new JPanel();
-        buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 30, 30)); // Posisi tombol di tengah dengan jarak
+        buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 100, 0)); // Jarak horizontal: 10px, vertikal: 0px
         buttonPanel.setBackground(new Color(203, 215, 176));
 
-        // Tombol Tips & Trik
-        JButton tipsButton = createImageButton("src\\main\\resources\\tipsntrik.png",100,100);
-        tipsButton.addActionListener(new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            System.out.println("Tips & Trik button clicked");
-        }
-        });
 
-        JButton scheduleButton = createImageButton("src\\main\\resources\\jadwal.png",100,100);
-        scheduleButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                System.out.println("Jadwal button clicked");
-            }
-        });
-
-
-        // Tombol Profil
-        JButton profileButton = createImageButton("src\\main\\resources\\profil.png",100, 100);
-        profileButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                System.out.println("Profil button clicked");
-            }
-        });
-
-        // Menambahkan tombol ke panel
-        buttonPanel.add(scheduleButton);
-        buttonPanel.add(tipsButton);
-        buttonPanel.add(profileButton);
+        // Membuat panel untuk setiap tombol dan teks
+        buttonPanel.add(createButtonWithLabel("src\\main\\resources\\jadwal.png", "Jadwal"));
+        buttonPanel.add(createButtonWithLabel("src\\main\\resources\\tipsntrik.png", "Tips & Trik"));
+        buttonPanel.add(createButtonWithLabel("src\\main\\resources\\profil.png", "Profil"));
 
         // Menambahkan elemen ke bottomPanel
         bottomPanel.add(Box.createRigidArea(new Dimension(0, 20)));
@@ -100,21 +71,45 @@ public class HalamanUtamaUI {
         frame.setVisible(true);
     }
 
-    // Membuat tombol fitur dengan ikon
+    // Membuat tombol fitur dengan teks di bawahnya
+    private JPanel createButtonWithLabel(String iconPath, String labelText) {
+        JPanel panel = new JPanel();
+        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+        panel.setBackground(new Color(203, 215, 176));
+        
+        // Hapus margin atau kurangi ukurannya
+        panel.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5)); // Margin kecil
+    
+        JButton button = createImageButton(iconPath, 100, 100);
+        button.setAlignmentX(Component.CENTER_ALIGNMENT);
+    
+        JLabel label = new JLabel(labelText);
+        label.setFont(new Font("Nunito", Font.BOLD, 18));
+        label.setForeground(new Color(83, 53, 74));
+        label.setAlignmentX(Component.CENTER_ALIGNMENT);
+    
+        panel.add(button);
+        panel.add(Box.createRigidArea(new Dimension(0, 5))); // Jarak kecil antara tombol dan label
+        panel.add(label);
+    
+        return panel;
+    }
     
 
+    // Membuat tombol fitur dengan ikon
     private JButton createImageButton(String iconPath, int width, int height) {
         ImageIcon originalIcon = new ImageIcon(iconPath); // Muat gambar asli
         Image scaledImage = originalIcon.getImage().getScaledInstance(width, height, Image.SCALE_SMOOTH); // Ubah ukuran gambar
         ImageIcon scaledIcon = new ImageIcon(scaledImage); // Buat ikon baru dari gambar yang sudah diubah ukurannya
-    
+
         JButton button = new JButton(scaledIcon); // Gunakan ikon baru untuk tombol
         button.setBorderPainted(false); // Menghapus border tombol
         button.setBackground(Color.WHITE);
-        button.setFocusPainted(true); // Menghapus highlight ketika tombol dipilih
+        button.setFocusPainted(false); // Menghapus highlight ketika tombol dipilih
         button.setPreferredSize(new Dimension(width, height)); // Atur ukuran tombol sesuai gambar
         return button;
     }
+
     public static void main(String[] args) {
         new HalamanUtamaUI();
     }

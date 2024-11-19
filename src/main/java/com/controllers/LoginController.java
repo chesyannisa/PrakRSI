@@ -7,7 +7,7 @@ import src.main.java.com.models.RegisterLogin;
 import src.main.java.com.ui.HalamanLoginUI;
 
 public class LoginController {
-    public void showHalamanLogin() {
+    public void tampilkanHalamanLogin() {
         RegisterLogin registerLogin = new RegisterLogin();
         HalamanLoginUI halamanLoginUI = new HalamanLoginUI(registerLogin);
     }

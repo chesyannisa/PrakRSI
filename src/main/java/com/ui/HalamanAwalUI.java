@@ -46,8 +46,7 @@ public class HalamanAwalUI {
         loginButton.setFont(new Font("Nunito", Font.BOLD, 16)); // Font tombol
         loginButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                LoginController loginController = new LoginController();
-                loginController.showHalamanLogin();
+                showHalamanLogin();
                 frame.dispose();
             }
         });
@@ -73,5 +72,10 @@ public class HalamanAwalUI {
 
         // Tampilkan frame
         frame.setVisible(true);
+    }
+
+    public void showHalamanLogin() {
+        LoginController loginController = new LoginController();
+        loginController.tampilkanHalamanLogin();
     }
 }

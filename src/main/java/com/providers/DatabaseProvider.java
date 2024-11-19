@@ -23,20 +23,18 @@ public class DatabaseProvider {
     }
 
     // Metode untuk insert data user ke tabel user_provider
-    public static void insertUser(String username, String namaLengkap, String tanggalLahir, 
-                                  String namaLengkapIbu, String password, 
-                                  String konfirmasiPass, boolean role) throws SQLException {
-        String sql = "INSERT INTO user_provider (username, namaLengkap, tanggalLahir, namaLengkapIbu, password, konfirmasiPass, role) " +
-                     "VALUES (?, ?, ?, ?, ?, ?, ?)";
+    public static void addUser(String username, String namaLengkap, String tanggalLahir, 
+                                  String namaIbu, String password, String role) throws SQLException {
+        String sql = "INSERT INTO user_provider (username, namaLengkap, tanggalLahir, namaIbu, password, role) " +
+                    "VALUES (?, ?, ?, ?, ?, ?, ?)";
         try (Connection conn = getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
             // Set nilai untuk setiap parameter
             stmt.setString(1, username);
             stmt.setString(2, namaLengkap);
             stmt.setString(3, tanggalLahir);
-            stmt.setString(4, namaLengkapIbu);
+            stmt.setString(4, namaIbu);
             stmt.setString(5, password);
-            stmt.setString(6, konfirmasiPass);
-            stmt.setBoolean(7, role);
+            stmt.setString(6, role);
             // Eksekusi query
             stmt.executeUpdate();
         }

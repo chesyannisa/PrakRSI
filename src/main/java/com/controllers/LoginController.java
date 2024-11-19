@@ -10,7 +10,7 @@ import src.main.java.com.ui.LupaPasswordUI;
 public class LoginController {
     public void tampilkanHalamanLogin() {
         RegisterLogin registerLogin = new RegisterLogin();
-        HalamanLoginUI halamanLoginUI = new HalamanLoginUI(registerLogin);
+        new HalamanLoginUI(registerLogin);
     }
 
     public boolean checkUsernamePassword(String Username, String Password) {

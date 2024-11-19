@@ -113,7 +113,9 @@ public class HalamanUtamaUI {
     }
 
     // Membuat tombol fitur dengan ikon
-    private JButton createImageButton(String iconPath, int width, int height, ActionListener actionListener) {
+    
+
+    private JButton createImageButton(String iconPath, int width, int height) {
         ImageIcon originalIcon = new ImageIcon(iconPath); // Muat gambar asli
         Image scaledImage = originalIcon.getImage().getScaledInstance(width, height, Image.SCALE_SMOOTH); // Ubah ukuran gambar
         ImageIcon scaledIcon = new ImageIcon(scaledImage); // Buat ikon baru dari gambar yang sudah diubah ukurannya

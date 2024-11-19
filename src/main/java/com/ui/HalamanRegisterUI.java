@@ -22,11 +22,7 @@ public class HalamanRegisterUI extends JFrame {
     private JButton registerButton;
     private RegisterLogin registerLogin;
 
-    public HalamanRegisterUI() {
-        FormRegist();
-    }
-
-    public void FormRegist() {
+    public HalamanRegisterUI(){
         // Konfigurasi Frame
         setTitle("Form Registrasi");
         setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -36,7 +32,7 @@ public class HalamanRegisterUI extends JFrame {
         registerLogin = new RegisterLogin();
 
         // Gambar di bagian atas
-        ImageIcon originalIcon = new ImageIcon("src\\main\\resources\\logo.png"); 
+        ImageIcon originalIcon = new ImageIcon("src\\main\\resources\\logo.png");
         Image scaledImage = originalIcon.getImage().getScaledInstance(230, 150, Image.SCALE_SMOOTH);
         JLabel imageLabel = new JLabel(new ImageIcon(scaledImage), SwingConstants.CENTER);
         add(imageLabel, BorderLayout.NORTH);
@@ -118,8 +114,7 @@ public class HalamanRegisterUI extends JFrame {
         gbc.gridwidth = 2;
         gbc.anchor = GridBagConstraints.CENTER;
 
-
-        RoundedButton registerButton = new RoundedButton("Register",30);
+        RoundedButton registerButton = new RoundedButton("Register", 30);
         registerButton.setBackground(new Color(166, 179, 125)); // Warna tombol hijau
         registerButton.setForeground(Color.WHITE);
         registerButton.setFont(new Font("Nunito", Font.BOLD, 16)); // Font tombol
@@ -146,10 +141,10 @@ public class HalamanRegisterUI extends JFrame {
 
         loginButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                HalamanLoginUI halamanLoginUI = new HalamanLoginUI(null);
+                new HalamanLoginUI(null);
                 dispose();
             }
-            });
+        });
 
         setVisible(true);
     }
@@ -163,21 +158,18 @@ public class HalamanRegisterUI extends JFrame {
         String password = new String(passwordField.getPassword());
         String konfirmasiPassword = new String(konfirmasiPasswordField.getPassword());
         String roleUser = masyarakatButton.isSelected() ? "Masyarakat" : "Pengelola";
-        
 
         if (!password.equals(konfirmasiPassword)) {
             RegisterController registerController = new RegisterController();
             registerController.tampilkanPesanErrorKonfirmasi();
             return;
-        }
-        else {
+        } else {
             MenyimpanData(namaLengkap, tglLahir, namaIbu, username, password, roleUser);
             RegisterController registerController = new RegisterController();
             registerController.tampilkanPesanSuksesRegistrasi();
             LoginController loginController = new LoginController();
             loginController.tampilkanHalamanLogin();
         }
-
     }
 
     public void MenyimpanData(String namaLengkap, LocalDate tglLahir, String namaIbu, String username, String Password, String roleUser) {

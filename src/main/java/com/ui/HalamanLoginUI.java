@@ -42,11 +42,11 @@ public class HalamanLoginUI {
         // Input Email
         gbc.gridx = 0;
         gbc.gridy = 0;
-        formPanel.add(new JLabel("Email:"), gbc);
+        formPanel.add(new JLabel("Username:"), gbc);
 
         gbc.gridx = 1;
-        JTextField emailField = new JTextField(20);
-        formPanel.add(emailField, gbc);
+        JTextField usernameField = new JTextField(20);
+        formPanel.add(usernameField, gbc);
 
         // Input Kata Sandi
         gbc.gridx = 0;
@@ -101,9 +101,9 @@ public class HalamanLoginUI {
         loginButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String email = emailField.getText();
+                String username = usernameField.getText();
                 String password = new String(passwordField.getPassword());
-                MemeriksaData(email, password);
+                MemeriksaData(username, password);
             }
         });
 

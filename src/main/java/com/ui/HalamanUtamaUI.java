@@ -12,7 +12,7 @@ public class HalamanUtamaUI {
 
     public HalamanUtamaUI() {
         // Membuat frame utama
-        JFrame frame = new JFrame("ResikinAE");
+        JFrame frame = new JFrame("ResikinAE: Main Page");
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 

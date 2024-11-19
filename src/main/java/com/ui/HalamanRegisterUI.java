@@ -24,7 +24,7 @@ public class HalamanRegisterUI extends JFrame {
 
     public HalamanRegisterUI(){
         // Konfigurasi Frame
-        setTitle("Form Registrasi");
+        setTitle("Resikin AE: Register");
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());

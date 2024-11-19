@@ -8,7 +8,6 @@ import java.time.LocalDate;
 import src.main.java.com.controllers.RegisterController;
 import src.main.java.com.controllers.LoginController;
 import src.main.java.com.models.RegisterLogin;
-import src.main.java.com.providers.DatabaseProvider;
 
 public class HalamanRegisterUI extends JFrame {
     private JTextField namaLengkapField;
@@ -22,44 +21,8 @@ public class HalamanRegisterUI extends JFrame {
     private ButtonGroup roleGroup;
     private JButton registerButton;
     private RegisterLogin registerLogin;
-    private JLabel statusLabel;
 
-    // ActionListener untuk tombol submit
-    submitButton.@addActionListener(new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            try {
-                // Ambil data dari input pengguna
-                String username = usernameField.getText();
-                String namaLengkap = namaLengkapField.getText();
-                String tanggalLahir = tglLahirField.getText();
-                String namaLengkapIbu = namaIbuField.getText();
-                String password = new String(passwordField.getPassword());
-                String konfirmasiPass = new String(konfirmasiPasswordField.getPassword());
-    
-                boolean isMasyarakat = masyarakatButton.isSelected();
-                boolean isPengelola = pengelolaButton.isSelected();
-    
-                // Validasi input sederhana
-                if (!password.equals(konfirmasiPass)) {
-                    statusLabel.setText("Password tidak cocok!");
-                    statusLabel.setForeground(Color.RED);
-                    return;
-                }
-    
-                // Simpan ke database (pastikan method ini ada di DatabaseProvider!)
-                DatabaseProvider.insertUser(username, namaLengkap, tanggalLahir, namaLengkapIbu, password, konfirmasiPass, isMasyarakat);
-                statusLabel.setText("Registrasi berhasil!");
-                statusLabel.setForeground(Color.GREEN);
-            } catch (Exception ex) {
-                statusLabel.setText("Gagal registrasi: " + ex.getMessage());
-                statusLabel.setForeground(Color.RED);
-            }
-        }
-    });
-    
-
-    public HalamanRegisterUI() {
+    public HalamanRegisterUI(){
         // Konfigurasi Frame
         setTitle("Form Registrasi");
         setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -209,19 +172,16 @@ public class HalamanRegisterUI extends JFrame {
         }
     }
 
-    public void MenyimpanData(String namaLengkap, LocalDate tglLahir, String namaIbu, String username, String Password,
-            String roleUser) {
+    public void MenyimpanData(String namaLengkap, LocalDate tglLahir, String namaIbu, String username, String Password, String roleUser) {
         RegisterController registerController = new RegisterController();
         registerController.InsertData(namaLengkap, tglLahir, namaIbu, username, Password, roleUser);
     }
 
     public static void pesanErrorKonfirmasi() {
-        JOptionPane.showMessageDialog(null, "Password tidak cocok! Registrasi gagal.", "Error",
-                JOptionPane.ERROR_MESSAGE);
+        JOptionPane.showMessageDialog(null, "Password tidak cocok! Registrasi gagal.", "Error", JOptionPane.ERROR_MESSAGE);
     }
 
     public static void pesanSuksesRegistrasi() {
         JOptionPane.showMessageDialog(null, "Registrasi berhasil!", "Sukses", JOptionPane.INFORMATION_MESSAGE);
     }
-
 }

@@ -9,12 +9,12 @@ import src.main.java.com.models.RegisterLogin;
 
 public class HalamanLoginUI {
     private RegisterLogin registerLogin;
+    private JFrame frame;
 
     public HalamanLoginUI(RegisterLogin registerLogin) {
         this.registerLogin = registerLogin;
 
-        // Membuat frame utama
-        JFrame frame = new JFrame("ResikinAE: Login");
+        frame = new JFrame("ResikinAE: Login");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setLayout(new BorderLayout());
@@ -125,6 +125,7 @@ public class HalamanLoginUI {
         LoginController loginController = new LoginController();
         if (loginController.checkUsernamePassword(username, password)) {
             showHalamanUtama();
+            frame.dispose();
         } else {
             loginController.tampilkanPesanError();
         }

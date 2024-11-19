@@ -1,12 +1,11 @@
 package src.main.java.com.ui;
 
-import javax.security.auth.login.LoginContext;
+import src.main.java.com.models.RegisterLogin;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import src.main.java.com.controllers.LoginController;
-import src.main.java.com.models.RegisterLogin;
 
 public class HalamanLoginUI {
     private RegisterLogin registerLogin;
@@ -38,14 +37,14 @@ public class HalamanLoginUI {
         gbc.insets = new Insets(10, 10, 10, 10);
         gbc.fill = GridBagConstraints.HORIZONTAL;
 
-        // Input Username
+        // Input Email
         gbc.gridx = 0;
         gbc.gridy = 0;
         formPanel.add(new JLabel("Username:"), gbc);
 
         gbc.gridx = 1;
-        JTextField usernameField = new JTextField(20);
-        formPanel.add(usernameField, gbc);
+        JTextField emailField = new JTextField(20);
+        formPanel.add(emailField, gbc);
 
         // Input Kata Sandi
         gbc.gridx = 0;
@@ -100,9 +99,9 @@ public class HalamanLoginUI {
         loginButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String username = usernameField.getText();
+                String email = emailField.getText();
                 String password = new String(passwordField.getPassword());
-                MemeriksaData(username, password);
+                registerLogin.login(email, password); // Proses login
             }
         });
 
@@ -123,24 +122,6 @@ public class HalamanLoginUI {
         });
 
 
-            frame.setVisible(true);
-        }
-
-        
-        private void MemeriksaData(String username, String password) {
-            LoginController loginController = new LoginController();
-            if (loginController.checkUsernamePassword(username, password)) {
-                showHalamanUtama();
-            } else {
-                loginController.tampilkanPesanError();
-            }
-        }
-
-        public void showHalamanUtama() {
-            new HalamanUtamaUI();
-        }
-
-        public static void pesanError() {
-            JOptionPane.showMessageDialog(null, "Username atau kata sandi salah!", "Login Gagal", JOptionPane.ERROR_MESSAGE);
-        }
+        frame.setVisible(true);
+    }
 }

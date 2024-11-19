@@ -22,7 +22,7 @@ public class UserProvider {
 
     public User getUserByNamaLengkap(String namaLengkap, LocalDate tglLahir, String namaIbu) {
         for (Object[] user : dataPengguna) {
-            if (user[0].equals(namaLengkap) && user[1].equals(tglLahir) && user[2].equals(namaIbu)) {
+            if (user[0] != null && user[1] != null && user[2] != null && user[0].equals(namaLengkap) && user[1].equals(tglLahir) && user[2].equals(namaIbu)) {
                 return new User((String) user[0], (LocalDate) user[1], (String) user[2], (String) user[3], (String) user[4], (String) user[5]);
             }
         }

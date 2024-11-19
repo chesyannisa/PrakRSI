@@ -11,12 +11,13 @@ import java.time.format.DateTimeParseException;
 
 public class LupaPasswordUI {
     public RegisterLogin registerLogin;
+    public JFrame frame;
 
     public LupaPasswordUI(RegisterLogin registerLogin) {
         this.registerLogin = registerLogin;
 
         // Membuat frame untuk lupa password
-        JFrame frame = new JFrame("Lupa Password");
+        frame = new JFrame("Lupa Password");
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -117,6 +118,7 @@ public class LupaPasswordUI {
             if (loginController.checkData(namaLengkap, tglLahir, namaIbu)) {
                 loginController.tampilkanPesanSuksesLupa(namaLengkap, tglLahir, namaIbu);
                 showHalamanUtama();
+                frame.dispose();
             } else {
                 loginController.tampilkanPesanErrorLupa();
             }

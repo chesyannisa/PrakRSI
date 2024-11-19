@@ -5,6 +5,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import src.main.java.com.controllers.LoginController;
+import src.main.java.com.controllers.RegisterController;
 
 public class HalamanAwalUI {
     public HalamanAwalUI() {
@@ -34,7 +35,7 @@ public class HalamanAwalUI {
         registerButton.setFont(new Font("Nunito", Font.BOLD, 16)); // Font tombol
         registerButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                HalamanRegisterUI halamanRegisterUI = new HalamanRegisterUI();
+                showHalamanRegister();
                 frame.dispose();
             }
         });
@@ -77,5 +78,10 @@ public class HalamanAwalUI {
     public void showHalamanLogin() {
         LoginController loginController = new LoginController();
         loginController.tampilkanHalamanLogin();
+    }
+
+    public void showHalamanRegister() {
+        RegisterController registerController = new RegisterController();
+        registerController.tampilkanHalamanRegister();
     }
 }

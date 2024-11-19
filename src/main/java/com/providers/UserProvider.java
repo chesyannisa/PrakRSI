@@ -11,7 +11,10 @@ public class UserProvider {
         {"Charlie Johnson", LocalDate.of(1992, 3, 12), "Laura Johnson", "charliej", "passw0rd", "Pengelola"},
         {"Diana Prince", LocalDate.of(1988, 11, 25), "Steve Prince", "dianap", "wonderwoman", "Masyarakat"},
         {"Eve Adams", LocalDate.of(1993, 2, 28), "Adam Adams", "evea", "evesecret", "Pengelola"},
-        {"Frank White", LocalDate.of(1987, 6, 30), "Nancy White", "frankw", "whitepass", "Masyarakat"}
+        {"Frank White", LocalDate.of(1987, 6, 30), "Nancy White", "frankw", "whitepass", "Masyarakat"},
+        {"George King", LocalDate.of(1991, 4, 22), "Martha King", "georgek", "kingpass", "Pengelola"},
+        {"Hannah Scott", LocalDate.of(1989, 9, 19), "Michael Scott", "hannahs", "scottpass", "Masyarakat"},
+        {"User", LocalDate.of(0, 0, 0), "User", "user", "password", "Masyarakat"}
     };
 
     public User getUserByUsername(String username) {

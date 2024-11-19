@@ -1,6 +1,9 @@
 package src.main.java.com.ui;
 
 import javax.swing.*;
+
+import src.main.java.com.controllers.ProfilController;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -56,7 +59,8 @@ public class HalamanUtamaUI {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frame.dispose(); // Menutup frame saat ini
-                // new JadwalUI(); // Membuka halaman Jadwal
+                // JadwalController jadwalController = new JadwalController();
+                // jadwalController.tampilkanHalamanJadwal();
             }
         }));
 
@@ -64,7 +68,8 @@ public class HalamanUtamaUI {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frame.dispose(); // Menutup frame saat ini
-                // new TipsTrikUI(); // Membuka halaman Tips & Trik
+                //TipsController tipsController = new TipsController();
+                //tipsController.tampilkanHalamanTips();
             }
         }));
 
@@ -72,7 +77,8 @@ public class HalamanUtamaUI {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frame.dispose(); // Menutup frame saat ini
-                new HalamanProfilUI(); // Membuka halaman Profil
+                ProfilController profilController = new ProfilController();
+                profilController.tampilkanHalamanProfil();
             }
         }));
 

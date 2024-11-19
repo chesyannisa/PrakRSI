@@ -1,11 +1,9 @@
 package src.main.java.com.controllers;
 
+import java.time.LocalDate;
+import src.main.java.com.models.User;
 import src.main.java.com.ui.HalamanRegisterUI;
 import src.main.java.com.providers.UserProvider;
-
-import java.time.LocalDate;
-
-import src.main.java.com.models.User;
 
 public class RegisterController {
     public void tampilkanHalamanRegister() {

@@ -1,7 +1,9 @@
 package src.main.java.com.ui;
 
+import src.main.java.com.controllers.LoginController;
 import src.main.java.com.models.RegisterLogin;
 
+import javax.security.auth.login.LoginContext;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -101,7 +103,7 @@ public class HalamanLoginUI {
             public void actionPerformed(ActionEvent e) {
                 String email = emailField.getText();
                 String password = new String(passwordField.getPassword());
-                registerLogin.login(email, password); // Proses login
+                MemeriksaData(email, password);
             }
         });
 
@@ -122,6 +124,23 @@ public class HalamanLoginUI {
         });
 
 
-        frame.setVisible(true);
-    }
+            frame.setVisible(true);
+        }
+
+        private void MemeriksaData(String email, String password) {
+            LoginController loginController = new LoginController();
+            if (loginController.checkUsernamePassword(email, password)) {
+                showHalamanUtama();
+            } else {
+                loginController.tampilkanPesanError();
+            }
+        }
+
+        public void showHalamanUtama() {
+            new HalamanUtamaUI();
+        }
+
+        public static void pesanError() {
+            JOptionPane.showMessageDialog(null, "Email atau kata sandi salah!", "Login Gagal", JOptionPane.ERROR_MESSAGE);
+        }
 }

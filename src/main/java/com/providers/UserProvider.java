@@ -1,5 +1,6 @@
 package src.main.java.com.providers;
 
+import src.main.java.com.models.User;
 import java.time.LocalDate;
 
 public class UserProvider {
@@ -12,5 +13,13 @@ public class UserProvider {
         {"Eve Adams", LocalDate.of(1993, 2, 28), "Adam Adams", "evea", "evesecret", "Pengelola"},
         {"Frank White", LocalDate.of(1987, 6, 30), "Nancy White", "frankw", "whitepass", "Masyarakat"}
     };
-   
+
+    public User getUserByUsername(String username) {
+        for (Object[] user : dataPengguna) {
+            if (user[3].equals(username)) {
+                return new User((String) user[0], (LocalDate) user[1], (String) user[2], (String) user[3], (String) user[4], (String) user[5]);
+            }
+        }
+        return null;
+    }
 }

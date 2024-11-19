@@ -1,5 +1,6 @@
 package src.main.java.com.ui;
 
+import src.main.java.com.controllers.LoginController;
 import src.main.java.com.models.RegisterLogin;
 import javax.swing.*;
 import java.awt.*;
@@ -90,12 +91,10 @@ public class LupaPasswordUI {
                     String tglLahirInput = tglLahirField.getText();
                     LocalDate tglLahir = LocalDate.parse(tglLahirInput); // Parsing tanggal
                     String namaIbu = namaIbuField.getText();
+                    MemeriksaData(namaLengkap, tglLahir, namaIbu);
 
-                    // Panggil metode lupaPassword di RegisterLogin
-                    registerLogin.lupaPassword(namaLengkap, tglLahir, namaIbu);
-                    frame.dispose(); // Menutup frame lupa password
                 } catch (DateTimeParseException ex) {
-                    JOptionPane.showMessageDialog(frame, "Format tanggal tidak valid. Harap gunakan format yyyy-MM-dd.");
+                    JOptionPane.showMessageDialog(frame, "Format tanggal tidak valid. Harap gunakan format yyyy-MM-dd.", "Error", JOptionPane.ERROR_MESSAGE);
                 }
             }
         });
@@ -111,5 +110,30 @@ public class LupaPasswordUI {
 
         // Atur ukuran dan tampilkan frame
         frame.setVisible(true);
+    }
+
+    private void MemeriksaData(String namaLengkap, LocalDate tglLahir, String namaIbu) {
+            LoginController loginController = new LoginController();
+            if (loginController.checkData(namaLengkap, tglLahir, namaIbu)) {
+                loginController.tampilkanPesanSuksesLupa(namaLengkap, tglLahir, namaIbu);
+                showHalamanUtama();
+            } else {
+                loginController.tampilkanPesanErrorLupa();
+            }
+    }
+
+    public static void pesanError() {
+        JOptionPane.showMessageDialog(null, "Data yang dimasukkan tidak valid. Silakan coba lagi.", "Error", JOptionPane.ERROR_MESSAGE);
+    }
+
+    public void showHalamanUtama() {
+        new HalamanUtamaUI();
+    }
+
+    public static void pesanSukses(String namaLengkap, LocalDate tglLahir, String namaIbu) {
+        LoginController loginController = new LoginController();
+        String username = loginController.getUsername(namaLengkap, tglLahir, namaIbu);
+        String password = loginController.getPassword(namaLengkap, tglLahir, namaIbu);
+        JOptionPane.showMessageDialog(null, "Username Anda: " + username + "\nPassword Anda: " + password, "Informasi Akun", JOptionPane.INFORMATION_MESSAGE);
     }
 }

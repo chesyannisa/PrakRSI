@@ -5,9 +5,9 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
-
+import src.main.java.com.controllers.RegisterController;
+import src.main.java.com.controllers.LoginController;
 import src.main.java.com.models.RegisterLogin;
-import src.main.java.com.models.User;
 
 public class HalamanRegisterUI extends JFrame {
     private JTextField namaLengkapField;
@@ -163,20 +163,33 @@ public class HalamanRegisterUI extends JFrame {
         String password = new String(passwordField.getPassword());
         String konfirmasiPassword = new String(konfirmasiPasswordField.getPassword());
         String roleUser = masyarakatButton.isSelected() ? "Masyarakat" : "Pengelola";
+        
 
         if (!password.equals(konfirmasiPassword)) {
-            JOptionPane.showMessageDialog(this, "Password tidak cocok! Registrasi gagal.");
+            RegisterController registerController = new RegisterController();
+            registerController.tampilkanPesanErrorKonfirmasi();
             return;
         }
+        else {
+            MenyimpanData(namaLengkap, tglLahir, namaIbu, username, password, roleUser);
+            RegisterController registerController = new RegisterController();
+            registerController.tampilkanPesanSuksesRegistrasi();
+            LoginController loginController = new LoginController();
+            loginController.tampilkanHalamanLogin();
+        }
 
-        // Buat objek User dengan data yang dimasukkan
-        User newUser = new User(namaLengkap, tglLahir, namaIbu, username, password, roleUser);
-
-        // Simpan ke RegisterLogin model
-        registerLogin.setUserData(newUser);
-
-        JOptionPane.showMessageDialog(this, "Registrasi berhasil! Selamat, " + newUser.getnamaLengkap());
-        // Lanjutkan proses penyimpanan data pengguna ke sistem
     }
 
+    public void MenyimpanData(String namaLengkap, LocalDate tglLahir, String namaIbu, String username, String Password, String roleUser) {
+        RegisterController registerController = new RegisterController();
+        registerController.InsertData(namaLengkap, tglLahir, namaIbu, username, Password, roleUser);
+    }
+
+    public static void pesanErrorKonfirmasi() {
+        JOptionPane.showMessageDialog(null, "Password tidak cocok! Registrasi gagal.", "Error", JOptionPane.ERROR_MESSAGE);
+    }
+
+    public static void pesanSuksesRegistrasi() {
+        JOptionPane.showMessageDialog(null, "Registrasi berhasil!", "Sukses", JOptionPane.INFORMATION_MESSAGE);
+    }
 }

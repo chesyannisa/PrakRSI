@@ -2,10 +2,7 @@ package src.main.java.com.controllers;
 
 import java.time.LocalDate;
 
-import javax.swing.JOptionPane;
-
 import src.main.java.com.models.RegisterLogin;
-import src.main.java.com.models.User;
 import src.main.java.com.ui.HalamanLoginUI;
 import src.main.java.com.providers.UserProvider;
 import src.main.java.com.ui.LupaPasswordUI;

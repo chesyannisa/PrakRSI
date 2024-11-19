@@ -34,4 +34,21 @@ public class UserProvider {
         }
         return null;
     }
+
+    public void addUser(User newUser) {
+        for (int i = 0; i < dataPengguna.length; i++) {
+            if (dataPengguna[i][0] == null) {
+            dataPengguna[i] = new Object[]{
+                newUser.getnamaLengkap(),
+                newUser.gettglLahir(),
+                newUser.getnamaIbu(),
+                newUser.getUsername(),
+                newUser.getPassword(),
+                newUser.getRoleUser()
+            };
+            return;
+            }
+        }
+    }
+    
 }

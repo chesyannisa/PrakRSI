@@ -14,7 +14,7 @@ public class UserProvider {
         {"Frank White", LocalDate.of(1987, 6, 30), "Nancy White", "frankw", "whitepass", "Masyarakat"},
         {"George King", LocalDate.of(1991, 4, 22), "Martha King", "georgek", "kingpass", "Pengelola"},
         {"Hannah Scott", LocalDate.of(1989, 9, 19), "Michael Scott", "hannahs", "scottpass", "Masyarakat"},
-        {"User", LocalDate.of(0, 0, 0), "User", "user", "password", "Masyarakat"}
+        {"User", LocalDate.of(2000, 1, 1), "User", "user", "password", "Masyarakat"}
     };
 
     public User getUserByUsername(String username) {

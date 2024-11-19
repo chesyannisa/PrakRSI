@@ -55,24 +55,24 @@ public class HalamanUtamaUI {
         buttonPanel.add(createButtonWithLabel("src\\main\\resources\\jadwal.png", "Jadwal", new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // new JadwalUI(); // Membuka halaman Jadwal
                 frame.dispose(); // Menutup frame saat ini
+                // new JadwalUI(); // Membuka halaman Jadwal
             }
         }));
 
         buttonPanel.add(createButtonWithLabel("src\\main\\resources\\tipsntrik.png", "Tips & Trik", new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // new TipsTrikUI(); // Membuka halaman Tips & Trik
                 frame.dispose(); // Menutup frame saat ini
+                // new TipsTrikUI(); // Membuka halaman Tips & Trik
             }
         }));
 
         buttonPanel.add(createButtonWithLabel("src\\main\\resources\\profil.png", "Profil", new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new ProfilUI(); // Membuka halaman Profil
                 frame.dispose(); // Menutup frame saat ini
+                new HalamanProfilUI(); // Membuka halaman Profil
             }
         }));
 
@@ -113,9 +113,7 @@ public class HalamanUtamaUI {
     }
 
     // Membuat tombol fitur dengan ikon
-    
-
-    private JButton createImageButton(String iconPath, int width, int height) {
+    private JButton createImageButton(String iconPath, int width, int height, ActionListener actionListener) {
         ImageIcon originalIcon = new ImageIcon(iconPath); // Muat gambar asli
         Image scaledImage = originalIcon.getImage().getScaledInstance(width, height, Image.SCALE_SMOOTH); // Ubah ukuran gambar
         ImageIcon scaledIcon = new ImageIcon(scaledImage); // Buat ikon baru dari gambar yang sudah diubah ukurannya

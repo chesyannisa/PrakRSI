@@ -83,7 +83,6 @@ public class HalamanLoginUI {
         frame.add(formPanel, BorderLayout.CENTER);
 
         // Bagian bawah: link register
-
         JPanel footerPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         JLabel footerLabel = new JLabel("Belum punya akun? ");
         RoundedButton registerButton = new RoundedButton("Register", 10);
@@ -93,9 +92,7 @@ public class HalamanLoginUI {
         footerPanel.add(registerButton);
         frame.add(footerPanel, BorderLayout.SOUTH);
         
-
         // Aksi tombol Login
-
         loginButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -121,25 +118,23 @@ public class HalamanLoginUI {
             }
         });
 
-
             frame.setVisible(true);
-        }
-
+    }
         
-        private void MemeriksaData(String username, String password) {
-            LoginController loginController = new LoginController();
-            if (loginController.checkUsernamePassword(username, password)) {
-                showHalamanUtama();
-            } else {
-                loginController.tampilkanPesanError();
-            }
+    private void MemeriksaData(String username, String password) {
+        LoginController loginController = new LoginController();
+        if (loginController.checkUsernamePassword(username, password)) {
+            showHalamanUtama();
+        } else {
+            loginController.tampilkanPesanError();
         }
+    }
 
-        public void showHalamanUtama() {
-            new HalamanUtamaUI();
-        }
+    public void showHalamanUtama() {
+        new HalamanUtamaUI();
+    }
 
-        public static void pesanError() {
-            JOptionPane.showMessageDialog(null, "Username atau kata sandi salah!", "Login Gagal", JOptionPane.ERROR_MESSAGE);
-        }
+    public static void pesanError() {
+        JOptionPane.showMessageDialog(null, "Username atau kata sandi salah!", "Login Gagal", JOptionPane.ERROR_MESSAGE);
+    }
 }

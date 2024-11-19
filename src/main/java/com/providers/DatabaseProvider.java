@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.time.LocalDate;
 
 public class DatabaseProvider {
     private static final String DB_URL = "jdbc:mysql://localhost:3306/resikinae_db";
@@ -23,20 +24,19 @@ public class DatabaseProvider {
     }
 
     // Metode untuk insert data user ke tabel user_provider
-    public static void addUser(String username, String namaLengkap, String tanggalLahir, 
-                                  String namaIbu, String password, String role) throws SQLException {
+    public void addUser(String namaLengkap, LocalDate tglLahir, String namaIbu, String username, String password, String roleUser) throws SQLException {
         String sql = "INSERT INTO user_provider (username, namaLengkap, tanggalLahir, namaIbu, password, role) " +
                     "VALUES (?, ?, ?, ?, ?, ?, ?)";
-        try (Connection conn = getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
+        Connection conn = getConnection();
+        PreparedStatement stmt = conn.prepareStatement(sql);
             // Set nilai untuk setiap parameter
-            stmt.setString(1, username);
-            stmt.setString(2, namaLengkap);
-            stmt.setString(3, tanggalLahir);
-            stmt.setString(4, namaIbu);
+            stmt.setString(1, namaLengkap);
+            stmt.setDate(2, java.sql.Date.valueOf(tglLahir));
+            stmt.setString(3, namaIbu);
+            stmt.setString(4, username);
             stmt.setString(5, password);
-            stmt.setString(6, role);
+            stmt.setString(6, roleUser);
             // Eksekusi query
             stmt.executeUpdate();
-        }
     }
 }

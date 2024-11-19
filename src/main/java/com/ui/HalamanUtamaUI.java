@@ -115,7 +115,4 @@ public class HalamanUtamaUI {
         button.setPreferredSize(new Dimension(width, height)); // Atur ukuran tombol sesuai gambar
         return button;
     }
-    public static void main(String[] args) {
-        new HalamanUtamaUI();
-    }
 }

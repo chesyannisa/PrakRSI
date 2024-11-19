@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import src.main.java.com.controllers.LoginController;
 
 public class HalamanAwalUI {
     public HalamanAwalUI() {
@@ -45,7 +46,8 @@ public class HalamanAwalUI {
         loginButton.setFont(new Font("Nunito", Font.BOLD, 16)); // Font tombol
         loginButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                HalamanLoginUI halamanLoginUI = new HalamanLoginUI(null);
+                LoginController loginController = new LoginController();
+                loginController.showHalamanLogin();
                 frame.dispose();
             }
         });

@@ -39,7 +39,7 @@ public class HalamanLoginUI {
         gbc.insets = new Insets(10, 10, 10, 10);
         gbc.fill = GridBagConstraints.HORIZONTAL;
 
-        // Input Email
+        // Input Username
         gbc.gridx = 0;
         gbc.gridy = 0;
         formPanel.add(new JLabel("Username:"), gbc);
@@ -127,9 +127,9 @@ public class HalamanLoginUI {
             frame.setVisible(true);
         }
 
-        private void MemeriksaData(String email, String password) {
+        private void MemeriksaData(String username, String password) {
             LoginController loginController = new LoginController();
-            if (loginController.checkUsernamePassword(email, password)) {
+            if (loginController.checkUsernamePassword(username, password)) {
                 showHalamanUtama();
             } else {
                 loginController.tampilkanPesanError();
@@ -141,6 +141,6 @@ public class HalamanLoginUI {
         }
 
         public static void pesanError() {
-            JOptionPane.showMessageDialog(null, "Email atau kata sandi salah!", "Login Gagal", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Username atau kata sandi salah!", "Login Gagal", JOptionPane.ERROR_MESSAGE);
         }
 }

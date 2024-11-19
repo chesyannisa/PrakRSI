@@ -1,5 +1,7 @@
 package src.main.java.com.providers;
 
+import src.main.java.com.models.User;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -24,18 +26,18 @@ public class DatabaseProvider {
     }
 
     // Metode untuk insert data user ke tabel user_provider
-    public void addUser(String namaLengkap, LocalDate tglLahir, String namaIbu, String username, String password, String roleUser) throws SQLException {
+    public void addUser(User newUser) throws SQLException {
         String sql = "INSERT INTO user_provider (username, namaLengkap, tanggalLahir, namaIbu, password, role) " +
                     "VALUES (?, ?, ?, ?, ?, ?, ?)";
         Connection conn = getConnection();
         PreparedStatement stmt = conn.prepareStatement(sql);
             // Set nilai untuk setiap parameter
-            stmt.setString(1, namaLengkap);
-            stmt.setDate(2, java.sql.Date.valueOf(tglLahir));
-            stmt.setString(3, namaIbu);
-            stmt.setString(4, username);
-            stmt.setString(5, password);
-            stmt.setString(6, roleUser);
+            stmt.setString(1, newUser.getnamaLengkap());
+            stmt.setDate(2, java.sql.Date.valueOf(newUser.gettglLahir()));
+            stmt.setString(3, newUser.getnamaIbu());
+            stmt.setString(4, newUser.getUsername());
+            stmt.setString(5, newUser.getPassword());
+            stmt.setString(6, newUser.getRoleUser());
             // Eksekusi query
             stmt.executeUpdate();
     }

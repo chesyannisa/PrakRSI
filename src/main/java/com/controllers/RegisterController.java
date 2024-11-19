@@ -14,7 +14,7 @@ public class RegisterController {
         DatabaseProvider databaseProvider = new DatabaseProvider();
         User newUser = new User(namaLengkap, tglLahir, namaIbu, username, password, roleUser);
         try {
-            databaseProvider.addUser(namaLengkap, tglLahir, namaIbu, username, password, roleUser);
+            databaseProvider.addUser(newUser);
         } catch (SQLException e) {
             e.printStackTrace();
         }

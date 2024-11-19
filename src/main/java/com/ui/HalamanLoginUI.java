@@ -1,13 +1,12 @@
 package src.main.java.com.ui;
 
-import src.main.java.com.controllers.LoginController;
-import src.main.java.com.models.RegisterLogin;
-
 import javax.security.auth.login.LoginContext;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import src.main.java.com.controllers.LoginController;
+import src.main.java.com.models.RegisterLogin;
 
 public class HalamanLoginUI {
     private RegisterLogin registerLogin;
@@ -127,6 +126,7 @@ public class HalamanLoginUI {
             frame.setVisible(true);
         }
 
+        
         private void MemeriksaData(String username, String password) {
             LoginController loginController = new LoginController();
             if (loginController.checkUsernamePassword(username, password)) {

@@ -22,11 +22,7 @@ public class HalamanRegisterUI extends JFrame {
     private JButton registerButton;
     private RegisterLogin registerLogin;
 
-    public HalamanRegisterUI() {
-        FormRegist();
-    }
-
-    public void FormRegist() {
+    public HalamanRegisterUI(){
         // Konfigurasi Frame
         setTitle("Form Registrasi");
         setExtendedState(JFrame.MAXIMIZED_BOTH);

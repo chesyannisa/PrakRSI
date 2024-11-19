@@ -28,7 +28,7 @@ public class DatabaseProvider {
     // Metode untuk insert data user ke tabel user_provider
     public void addUser(User newUser) throws SQLException {
         String sql = "INSERT INTO user_provider (username, namaLengkap, tanggalLahir, namaIbu, password, role) " +
-                    "VALUES (?, ?, ?, ?, ?, ?, ?)";
+                    "VALUES (?, ?, ?, ?, ?, ?)";
         Connection conn = getConnection();
         PreparedStatement stmt = conn.prepareStatement(sql);
             // Set nilai untuk setiap parameter

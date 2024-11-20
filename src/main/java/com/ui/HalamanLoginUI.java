@@ -102,6 +102,7 @@ public class HalamanLoginUI {
             }
         });
 
+        // Aksi tombol Lupa Sandi
         forgotPasswordButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -110,6 +111,7 @@ public class HalamanLoginUI {
             }
         });
 
+        // Aksi tombol Register
         registerButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

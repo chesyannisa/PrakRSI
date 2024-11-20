@@ -1,6 +1,9 @@
 package src.main.java.com.ui;
 
 import javax.swing.*;
+
+import src.main.java.com.controllers.ProfilController;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -91,6 +94,7 @@ public class HalamanProfilUI {
         editButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                showHalamanEditProfil(); // Menampilkan halaman edit profil
                 JOptionPane.showMessageDialog(frame, "Edit Profil clicked!");
             }
         });
@@ -98,6 +102,7 @@ public class HalamanProfilUI {
         backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                new HalamanUtamaUI(); // Kembali ke halaman utama
                 frame.dispose(); // Menutup halaman profil
             }
         });
@@ -138,7 +143,9 @@ public class HalamanProfilUI {
         button.setBorder(BorderFactory.createLineBorder(new Color(83, 53, 74)));
     }
 
-    public static void main(String[] args) {
-        new HalamanProfilUI();
+    // Metode untuk menampilkan halaman edit profil
+    private void showHalamanEditProfil() {
+        ProfilController profilController = new ProfilController();
+        profilController.tampilkanHalamanEditProfil();
     }
 }

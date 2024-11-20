@@ -121,6 +121,7 @@ public class HalamanLoginUI {
             frame.setVisible(true);
     }
         
+    // Memeriksa data login
     private void MemeriksaData(String username, String password) {
         LoginController loginController = new LoginController();
         if (loginController.checkUsernamePassword(username, password)) {
@@ -131,10 +132,12 @@ public class HalamanLoginUI {
         }
     }
 
+    // Menampilkan halaman utama
     public void showHalamanUtama() {
         new HalamanUtamaUI();
     }
 
+    // Menampilkan pesan error
     public static void pesanError() {
         JOptionPane.showMessageDialog(null, "Username atau kata sandi salah!", "Login Gagal", JOptionPane.ERROR_MESSAGE);
     }

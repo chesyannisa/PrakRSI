@@ -172,15 +172,18 @@ public class HalamanRegisterUI extends JFrame {
         }
     }
 
+    // Menyimpan data ke database
     public void MenyimpanData(String namaLengkap, LocalDate tglLahir, String namaIbu, String username, String Password, String roleUser) {
         RegisterController registerController = new RegisterController();
         registerController.InsertData(namaLengkap, tglLahir, namaIbu, username, Password, roleUser);
     }
 
+    // Menampilkan pesan error
     public static void pesanErrorKonfirmasi() {
         JOptionPane.showMessageDialog(null, "Password tidak cocok! Registrasi gagal.", "Error", JOptionPane.ERROR_MESSAGE);
     }
 
+    // Menampilkan pesan sukses
     public static void pesanSuksesRegistrasi() {
         JOptionPane.showMessageDialog(null, "Registrasi berhasil!", "Sukses", JOptionPane.INFORMATION_MESSAGE);
     }

@@ -75,11 +75,13 @@ public class HalamanAwalUI {
         frame.setVisible(true);
     }
 
+    // Menampilkan halaman login
     public void showHalamanLogin() {
         LoginController loginController = new LoginController();
         loginController.tampilkanHalamanLogin();
     }
 
+    // Menampilkan halaman register
     public void showHalamanRegister() {
         RegisterController registerController = new RegisterController();
         registerController.tampilkanHalamanRegister();

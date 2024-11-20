@@ -65,6 +65,7 @@ public class User {
         this.password = password;
     }
 
+    // Getter dan Setter untuk roleUser
     public String getRoleUser(){
         return roleUser;
     }

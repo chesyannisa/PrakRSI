@@ -113,6 +113,7 @@ public class LupaPasswordUI {
         frame.setVisible(true);
     }
 
+    // Memeriksa data yang dimasukkan
     private void MemeriksaData(String namaLengkap, LocalDate tglLahir, String namaIbu) {
             LoginController loginController = new LoginController();
             if (loginController.checkData(namaLengkap, tglLahir, namaIbu)) {
@@ -124,14 +125,17 @@ public class LupaPasswordUI {
             }
     }
 
+    // Menampilkan pesan error
     public static void pesanError() {
         JOptionPane.showMessageDialog(null, "Data yang dimasukkan tidak valid. Silakan coba lagi.", "Error", JOptionPane.ERROR_MESSAGE);
     }
 
+    // Menampilkan halaman utama
     public void showHalamanUtama() {
         new HalamanUtamaUI();
     }
 
+    // Menampilkan pesan sukses
     public static void pesanSukses(String namaLengkap, LocalDate tglLahir, String namaIbu) {
         LoginController loginController = new LoginController();
         String username = loginController.getUsername(namaLengkap, tglLahir, namaIbu);

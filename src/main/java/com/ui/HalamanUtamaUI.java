@@ -25,7 +25,7 @@ public class HalamanUtamaUI {
         topPanel.setBackground(Color.WHITE);
 
         // Logo
-        JLabel logoLabel = new JLabel(new ImageIcon("src\\main\\resources\\logo.png"));
+        JLabel logoLabel = new JLabel(new ImageIcon("src\\main\\resources\\images\\logo.png"));
         logoLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         // Judul
@@ -55,7 +55,7 @@ public class HalamanUtamaUI {
         buttonPanel.setBackground(new Color(203, 215, 176));
 
         // Membuat panel untuk setiap tombol dan teks dengan ActionListener
-        buttonPanel.add(createButtonWithLabel("src\\main\\resources\\jadwal.png", "Jadwal", new ActionListener() {
+        buttonPanel.add(createButtonWithLabel("src\\main\\resources\\images\\jadwal.png", "Jadwal", new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frame.dispose(); // Menutup frame saat ini
@@ -64,7 +64,7 @@ public class HalamanUtamaUI {
             }
         }));
 
-        buttonPanel.add(createButtonWithLabel("src\\main\\resources\\tipsntrik.png", "Tips & Trik", new ActionListener() {
+        buttonPanel.add(createButtonWithLabel("src\\main\\resources\\images\\tipsntrik.png", "Tips & Trik", new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frame.dispose(); // Menutup frame saat ini
@@ -73,7 +73,7 @@ public class HalamanUtamaUI {
             }
         }));
 
-        buttonPanel.add(createButtonWithLabel("src\\main\\resources\\profil.png", "Profil", new ActionListener() {
+        buttonPanel.add(createButtonWithLabel("src\\main\\resources\\images\\profil.png", "Profil", new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frame.dispose(); // Menutup frame saat ini

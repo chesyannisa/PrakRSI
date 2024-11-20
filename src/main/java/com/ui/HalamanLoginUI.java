@@ -23,7 +23,7 @@ public class HalamanLoginUI {
         JPanel headerPanel = new JPanel(new BorderLayout());
         headerPanel.setBackground(Color.WHITE);
 
-        ImageIcon logoIcon = new ImageIcon("src\\main\\resources\\logo.png"); 
+        ImageIcon logoIcon = new ImageIcon("src\\main\\resources\\images\\logo.png"); 
         Image scaledLogo = logoIcon.getImage().getScaledInstance(230, 150, Image.SCALE_SMOOTH);
         JLabel logoLabel = new JLabel(new ImageIcon(scaledLogo), SwingConstants.CENTER);
         headerPanel.add(logoLabel, BorderLayout.NORTH);

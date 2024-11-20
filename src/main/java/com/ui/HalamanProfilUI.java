@@ -23,7 +23,7 @@ public class HalamanProfilUI {
         topPanel.setLayout(new BorderLayout());
         topPanel.setBackground(new Color(239, 234, 221));
 
-        JLabel logoLabel = new JLabel(new ImageIcon("src\\main\\resources\\logo.png")); // Logo
+        JLabel logoLabel = new JLabel(new ImageIcon("src\\main\\resources\\images\\logo.png")); // Logo
         logoLabel.setHorizontalAlignment(JLabel.LEFT);
 
         JLabel titleLabel = new JLabel("Profil");
@@ -40,7 +40,7 @@ public class HalamanProfilUI {
         centerPanel.setBackground(new Color(203, 215, 176));
 
         // Foto profil
-        JLabel profilePictureLabel = new JLabel(new ImageIcon("src\\main\\resources\\profile_picture.png")); // Placeholder gambar
+        JLabel profilePictureLabel = new JLabel(new ImageIcon("src\\main\\resources\\images\\profile_picture.png")); // Placeholder gambar
         profilePictureLabel.setPreferredSize(new Dimension(100, 100));
         profilePictureLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
 

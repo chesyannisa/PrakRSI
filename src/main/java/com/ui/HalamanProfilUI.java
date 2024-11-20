@@ -12,7 +12,7 @@ public class HalamanProfilUI {
 
     public HalamanProfilUI() {
         // Membuat frame
-        JFrame frame = new JFrame("Profil");
+        JFrame frame = new JFrame("ResikinAE: Profile");
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setLayout(new BorderLayout());

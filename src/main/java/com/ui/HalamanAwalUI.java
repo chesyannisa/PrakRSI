@@ -20,7 +20,7 @@ public class HalamanAwalUI {
         gbc.insets = new Insets(10, 10, 10, 10); // Margin antar elemen
 
         // Membuat label untuk logo
-        JLabel imageLabel = new JLabel(new ImageIcon("src\\main\\resources\\logo.png"));
+        JLabel imageLabel = new JLabel(new ImageIcon("src\\main\\resources\\images\\logo.png"));
         imageLabel.setHorizontalAlignment(SwingConstants.CENTER);
 
         // Membuat label "Selamat Datang!"

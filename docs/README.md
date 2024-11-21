@@ -21,21 +21,7 @@ This repository contains practical assignments for the Rekayasa Sistem Informasi
 
 ## Usage
 
-To run the application, follow these steps:
-
-1. Ensure you have Java Development Kit (JDK) installed (version 11 or higher).
-2. Navigate to the project directory.
-3. Compile the project using your preferred IDE or by running the following command in the terminal:
-
-    ```sh
-    javac -d bin src/main/java/com/**/*.java
-    ```
-
-4. Run the application by executing the Main class:
-
-    ```sh
-    java -cp bin src.main.java.Main
-    ```
+To run the application, ensure you have Java Development Kit (JDK) installed (version 11 or higher), navigate to the project directory, compile the project using your preferred IDE or by running `javac -d bin src/main/java/com/**/*.java` in the terminal, and then run the application by executing the Main class with `java -cp bin src.main.java.Main`.
 
 ## Features
 
@@ -48,28 +34,7 @@ To run the application, follow these steps:
 
 ## Contributing
 
-We welcome contributions to this project! To contribute, please follow these guidelines:
-
-1. Fork the repository.
-2. Create a new branch for your feature or bugfix:
-
-    ```sh
-    git checkout -b feature/your-feature-name
-    ```
-
-3. Make your changes and commit them with descriptive messages:
-
-    ```sh
-    git commit -m "Add feature X"
-    ```
-
-4. Push your changes to your forked repository:
-
-    ```sh
-    git push origin feature/your-feature-name
-    ```
-
-5. Open a pull request and describe your changes in detail.
+We welcome contributions! To contribute, fork the repository, create a new branch, make your changes with descriptive commit messages, push to your fork, and open a pull request describing your changes.
 
 ## Code of Conduct
 

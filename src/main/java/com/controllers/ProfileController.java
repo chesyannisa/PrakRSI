@@ -1,7 +1,7 @@
 package src.main.java.com.controllers;
 import src.main.java.com.ui.HalamanProfilUI;
 import src.main.java.com.ui.HalamanEditProfilUI;
-public class ProfilController {
+public class ProfileController {
     // Method untuk menampilkan halaman profil
     public void tampilkanHalamanProfil() {
         new HalamanProfilUI();

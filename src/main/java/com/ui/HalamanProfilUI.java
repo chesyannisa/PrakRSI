@@ -3,7 +3,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import src.main.java.com.controllers.ProfilController;
+import src.main.java.com.controllers.ProfileController;
 
 public class HalamanProfilUI {
 
@@ -142,7 +142,7 @@ public class HalamanProfilUI {
 
     // Metode untuk menampilkan halaman edit profil
     private void showHalamanEditProfil() {
-        ProfilController profilController = new ProfilController();
+        ProfileController profilController = new ProfileController();
         profilController.tampilkanHalamanEditProfil();
     }
 }

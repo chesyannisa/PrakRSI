@@ -3,7 +3,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import src.main.java.com.controllers.ProfilController;
+import src.main.java.com.controllers.ProfileController;
 
 public class HalamanUtamaUI {
 
@@ -72,7 +72,7 @@ public class HalamanUtamaUI {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frame.dispose(); // Menutup frame saat ini
-                ProfilController profilController = new ProfilController();
+                ProfileController profilController = new ProfileController();
                 profilController.tampilkanHalamanProfil();
             }
         }));

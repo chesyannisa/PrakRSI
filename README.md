@@ -9,6 +9,7 @@ This repository contains practical assignments for the Rekayasa Sistem Informasi
 - `src/`: Contains the source code for the project.
   - `main/`: Main source code directory.
     - `java/`: Java source files.
+      - `Main.java`: Entry point for the application.
       - `com/`: Main package directory.
         - `controllers/`: Contains controller classes.
         - `models/`: Contains model classes.
@@ -17,7 +18,6 @@ This repository contains practical assignments for the Rekayasa Sistem Informasi
     - `resources/`: Contains resource files.
       - `applications.properties`: Configuration properties for the application.
       - `images/`: Directory for image resources.
-- `Main.java`: Entry point for the application.
 
 ## Usage
 

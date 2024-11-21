@@ -1,12 +1,9 @@
 package src.main.java.com.ui;
-
 import javax.swing.*;
-
-import src.main.java.com.controllers.ProfilController;
-
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import src.main.java.com.controllers.ProfilController;
 
 public class HalamanUtamaUI {
 

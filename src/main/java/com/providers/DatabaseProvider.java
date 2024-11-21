@@ -1,12 +1,11 @@
 package src.main.java.com.providers;
 
-import src.main.java.com.models.User;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import src.main.java.com.models.User;
 
 public class DatabaseProvider {
     private static final String DB_URL = "jdbc:mysql://localhost:3306/resikinae_db";

@@ -1,5 +1,4 @@
 package src.main.java.com.controllers;
-
 import java.time.LocalDate;
 import src.main.java.com.models.User;
 import java.sql.SQLException;

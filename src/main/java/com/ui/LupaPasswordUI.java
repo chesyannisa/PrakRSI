@@ -1,5 +1,4 @@
 package src.main.java.com.ui;
-
 import src.main.java.com.controllers.LoginController;
 import src.main.java.com.models.RegisterLogin;
 import javax.swing.*;

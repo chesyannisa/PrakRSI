@@ -16,7 +16,7 @@ This repository contains the source code for the ResikinAE application, a system
         - `providers/`: Contains provider classes.
         - `ui/`: Contains UI classes.
     - `resources/`: Contains resource files.
-      - `config`: COnfiguration files.
+      - `config`: Configuration files.
       - `images/`: Directory for image resources.
 
 ## Usage

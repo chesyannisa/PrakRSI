@@ -4,6 +4,9 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+
 import src.main.java.com.controllers.RegisterController;
 import src.main.java.com.controllers.LoginController;
 import src.main.java.com.models.RegisterLogin;
@@ -151,7 +154,15 @@ public class HalamanRegisterUI extends JFrame {
         // Ambil data dari form
         RegisterController registerController = new RegisterController();
         String namaLengkap = namaLengkapField.getText();
-        LocalDate tglLahir = LocalDate.parse(tglLahirField.getText());
+        String tglLahirText = tglLahirField.getText();
+        LocalDate tglLahir = null;
+        try {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd"); // Adjust the pattern as needed
+            tglLahir = LocalDate.parse(tglLahirText, formatter);
+        } catch (DateTimeParseException e) {
+            JOptionPane.showMessageDialog(this, "Tanggal lahir tidak valid. Format yang benar adalah yyyy-MM-dd.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
         String namaIbu = namaIbuField.getText();
         String username = usernameField.getText();
         String password = new String(passwordField.getPassword());

@@ -12,8 +12,6 @@ public class HalamanUtamaUI {
         JFrame frame = new JFrame("ResikinAE: Main Page");
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        // Atur layout utama
         frame.setLayout(new BorderLayout());
 
         // Panel untuk bagian atas (logo dan judul)

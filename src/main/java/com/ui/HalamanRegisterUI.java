@@ -150,6 +150,7 @@ public class HalamanRegisterUI extends JFrame {
 
     private void pendaftaranUser() {
         // Ambil data dari form
+        RegisterController registerController = new RegisterController();
         String namaLengkap = namaLengkapField.getText();
         LocalDate tglLahir = LocalDate.parse(tglLahirField.getText());
         String namaIbu = namaIbuField.getText();
@@ -159,12 +160,10 @@ public class HalamanRegisterUI extends JFrame {
         String roleUser = masyarakatButton.isSelected() ? "Masyarakat" : "Pengelola";
 
         if (!password.equals(konfirmasiPassword)) {
-            RegisterController registerController = new RegisterController();
             registerController.tampilkanPesanErrorKonfirmasi();
             return;
         } else {
             MenyimpanData(namaLengkap, tglLahir, namaIbu, username, password, roleUser);
-            RegisterController registerController = new RegisterController();
             registerController.tampilkanPesanSuksesRegistrasi();
             LoginController loginController = new LoginController();
             loginController.tampilkanHalamanLogin();

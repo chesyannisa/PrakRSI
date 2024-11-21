@@ -42,4 +42,4 @@ This project adheres to a Code of Conduct. By participating, you are expected to
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE]() file for details.
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/chesyannisa/PrakRSI/blob/main/LICENSE) file for details.

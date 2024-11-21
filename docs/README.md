@@ -2,7 +2,7 @@
 
 ## Description
 
-This repository contains practical assignments for the Rekayasa Sistem Informasi course. The assignments are designed to provide hands-on experience with system engineering concepts and tools.
+This repository contains the source code for the ResikinAE application, a system designed to manage user accounts and provide waste management information. It is developed as part of the Rekayasa Sistem Informasi course to provide hands-on experience with system engineering concepts and tools.
 
 ## Directories
 
@@ -16,7 +16,7 @@ This repository contains practical assignments for the Rekayasa Sistem Informasi
         - `providers/`: Contains provider classes.
         - `ui/`: Contains UI classes.
     - `resources/`: Contains resource files.
-      - `applications.properties`: Configuration properties for the application.
+      - `config`: COnfiguration files.
       - `images/`: Directory for image resources.
 
 ## Usage

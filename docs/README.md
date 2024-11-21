@@ -38,8 +38,8 @@ We welcome contributions! To contribute, fork the repository, create a new branc
 
 ## Code of Conduct
 
-This project adheres to a Code of Conduct. By participating, you are expected to uphold this code. Please report unacceptable behavior to [reishash](github.com/reishash).
+This project adheres to a Code of Conduct. By participating, you are expected to uphold this code. Please report unacceptable behavior to [reishash](https://github.com/reishash).
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE]() file for details.

@@ -1,11 +1,20 @@
 package src.main.java.com.controllers;
+
 import java.time.LocalDate;
 import src.main.java.com.models.RegisterLogin;
 import src.main.java.com.ui.HalamanLoginUI;
 import src.main.java.com.providers.UserProvider;
 import src.main.java.com.ui.LupaPasswordUI;
+import src.main.java.com.models.User;
 
 public class LoginController {
+
+    private UserProvider userProvider;
+
+    public LoginController() {
+        this.userProvider = new UserProvider();
+    }
+
     // Method untuk menampilkan halaman login
     public void tampilkanHalamanLogin() {
         RegisterLogin registerLogin = new RegisterLogin();
@@ -13,13 +22,9 @@ public class LoginController {
     }
 
     // Method untuk mengecek apakah username dan password sudah benar
-    public boolean checkUsernamePassword(String Username, String Password) {
-        UserProvider userProvider = new UserProvider();
-        boolean userExists = false;
-        if (userProvider.getUserByUsername(Username) != null) {
-            userExists = userProvider.getUserByUsername(Username).getPassword().equals(Password);
-        }
-        return userExists;
+    public boolean checkUsernamePassword(String username, String password) {
+        User user = userProvider.getUserByUsername(username);
+        return user != null && user.getPassword().equals(password);
     }
 
     // Method untuk menampilkan pesan error
@@ -29,12 +34,7 @@ public class LoginController {
 
     // Method untuk menampilkan pesan sukses login
     public boolean checkData(String namaLengkap, LocalDate tglLahir, String namaIbu) {
-        UserProvider userProvider = new UserProvider();
-        boolean userExists = false;
-        if (userProvider.getUserByNamaLengkap(namaLengkap, tglLahir, namaIbu) != null) {
-            userExists = true;
-        }
-        return userExists;
+        return userProvider.getUserByNamaLengkap(namaLengkap, tglLahir, namaIbu) != null;
     }
 
     // Method untuk menampilkan pesan error
@@ -44,18 +44,21 @@ public class LoginController {
 
     // Method untuk menampilkan pesan sukses lupa password
     public void tampilkanPesanSuksesLupa(String namaLengkap, LocalDate tglLahir, String namaIbu) {
-        LupaPasswordUI.pesanSukses(namaLengkap, tglLahir, namaIbu);
+        User user = userProvider.getUserByNamaLengkap(namaLengkap, tglLahir, namaIbu);
+        if (user != null) {
+            LupaPasswordUI.pesanSukses(user.getUsername(), user.gettglLahir(), user.getnamaIbu());
+        }
     }
 
     // Method untuk mendapatkan username
     public String getUsername(String namaLengkap, LocalDate tglLahir, String namaIbu) {
-        UserProvider userProvider = new UserProvider();
-        return userProvider.getUserByNamaLengkap(namaLengkap, tglLahir, namaIbu).getUsername();
+        User user = userProvider.getUserByNamaLengkap(namaLengkap, tglLahir, namaIbu);
+        return user != null ? user.getUsername() : null;
     }
 
     // Method untuk mendapatkan password
     public String getPassword(String namaLengkap, LocalDate tglLahir, String namaIbu) {
-        UserProvider userProvider = new UserProvider();
-        return userProvider.getUserByNamaLengkap(namaLengkap, tglLahir, namaIbu).getPassword();
+        User user = userProvider.getUserByNamaLengkap(namaLengkap, tglLahir, namaIbu);
+        return user != null ? user.getPassword() : null;
     }
 }

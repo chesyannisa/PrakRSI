@@ -18,7 +18,6 @@ public class HalamanRegisterUI extends JFrame {
     private JRadioButton masyarakatButton;
     private JRadioButton pengelolaButton;
     private ButtonGroup roleGroup;
-    private JButton registerButton;
     private RegisterLogin registerLogin;
 
     public HalamanRegisterUI(){

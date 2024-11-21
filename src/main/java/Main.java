@@ -1,3 +1,4 @@
+package src.main.java;
 import src.main.java.com.ui.HalamanAwalUI;
 
 public class Main {

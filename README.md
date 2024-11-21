@@ -21,7 +21,21 @@ This repository contains practical assignments for the Rekayasa Sistem Informasi
 
 ## Usage
 
-To run the application, execute the `Main` class located in the `src/main/java` directory. This will launch the main UI of the application.
+To run the application, follow these steps:
+
+1. Ensure you have Java Development Kit (JDK) installed (version 11 or higher).
+2. Navigate to the project directory.
+3. Compile the project using your preferred IDE or by running the following command in the terminal:
+
+    ```sh
+    javac -d bin src/main/java/com/**/*.java
+    ```
+
+4. Run the application by executing the Main class:
+
+    ```sh
+    java -cp bin src.main.java.Main
+    ```
 
 ## Features
 
@@ -34,7 +48,32 @@ To run the application, execute the `Main` class located in the `src/main/java` 
 
 ## Contributing
 
-If you would like to contribute to this project, please fork the repository and submit a pull request. For major changes, please open an issue first to discuss what you would like to change.
+We welcome contributions to this project! To contribute, please follow these guidelines:
+
+1. Fork the repository.
+2. Create a new branch for your feature or bugfix:
+
+    ```sh
+    git checkout -b feature/your-feature-name
+    ```
+
+3. Make your changes and commit them with descriptive messages:
+
+    ```sh
+    git commit -m "Add feature X"
+    ```
+
+4. Push your changes to your forked repository:
+
+    ```sh
+    git push origin feature/your-feature-name
+    ```
+
+5. Open a pull request and describe your changes in detail.
+
+## Code of Conduct
+
+This project adheres to a Code of Conduct. By participating, you are expected to uphold this code. Please report unacceptable behavior to [@reishash](github.com/reishash).
 
 ## License
 

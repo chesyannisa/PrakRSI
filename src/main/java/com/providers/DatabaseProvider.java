@@ -24,13 +24,13 @@ public class DatabaseProvider {
     }
 
     public void addUser(User newUser) throws SQLException {
-        String query = "INSERT INTO user_provider (username, namaLengkap, tanggalLahir, namaIbu, password, role) VALUES (?, ?, ?, ?, ?, ?)";
+        String query = "INSERT INTO user_provider (username, namaLengkap, tanggalLahir, namaLengkapIbu, password, role) VALUES (?, ?, ?, ?, ?, ?)";
         try (Connection connection = getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setString(1, newUser.getUsername());
             preparedStatement.setString(2, newUser.getnamaLengkap());
             preparedStatement.setDate(3, java.sql.Date.valueOf(newUser.gettglLahir()));
-            preparedStatement.setString(4, newUser.getnamaIbu());
+            preparedStatement.setString(4, newUser.getnamaLengkapIbu());
             preparedStatement.setString(5, newUser.getPassword());
             preparedStatement.setString(6, newUser.getRoleUser());
             preparedStatement.executeUpdate();

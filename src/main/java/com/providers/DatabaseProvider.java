@@ -3,7 +3,10 @@ package src.main.java.com.providers;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
+
 import src.main.java.com.models.User;
 
 public class DatabaseProvider {
@@ -24,16 +27,54 @@ public class DatabaseProvider {
     }
 
     public void addUser(User newUser) throws SQLException {
-        String query = "INSERT INTO user_provider (username, namaLengkap, tanggalLahir, namaLengkapIbu, password, role) VALUES (?, ?, ?, ?, ?, ?)";
+        String query = "INSERT INTO user_provider (username, namaLengkap, tanggalLahir, namaIbu, password, role) VALUES (?, ?, ?, ?, ?, ?)";
         try (Connection connection = getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setString(1, newUser.getUsername());
             preparedStatement.setString(2, newUser.getnamaLengkap());
             preparedStatement.setDate(3, java.sql.Date.valueOf(newUser.gettglLahir()));
-            preparedStatement.setString(4, newUser.getnamaLengkapIbu());
+            preparedStatement.setString(4, newUser.getnamaIbu());
             preparedStatement.setString(5, newUser.getPassword());
             preparedStatement.setString(6, newUser.getRoleUser());
             preparedStatement.executeUpdate();
         }
+    }
+
+    public User getUserByUsername(String username) throws SQLException {
+        String query = "SELECT * FROM user_provider WHERE username = ?";
+        try (Connection connection = getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setString(1, username);
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    String namaLengkap = resultSet.getString("namaLengkap");
+                    LocalDate tglLahir = resultSet.getDate("tanggalLahir").toLocalDate();
+                    String namaIbu = resultSet.getString("namaIbu");
+                    String password = resultSet.getString("password");
+                    String roleUser = resultSet.getString("role");
+                    return new User(namaLengkap, tglLahir, namaIbu, username, password, roleUser);
+                }
+            }
+        }
+        return null;
+    }
+
+    public User getUserByNamaLengkap(String namaLengkap, LocalDate tglLahir, String namaIbu) throws SQLException {
+        String query = "SELECT * FROM user_provider WHERE namaLengkap = ? AND tanggalLahir = ? AND namaIbu = ?";
+        try (Connection connection = getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setString(1, namaLengkap);
+            preparedStatement.setDate(2, java.sql.Date.valueOf(tglLahir));
+            preparedStatement.setString(3, namaIbu);
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    String username = resultSet.getString("username");
+                    String password = resultSet.getString("password");
+                    String roleUser = resultSet.getString("role");
+                    return new User(namaLengkap, tglLahir, namaIbu, username, password, roleUser);
+                }
+            }
+        }
+        return null;
     }
 }

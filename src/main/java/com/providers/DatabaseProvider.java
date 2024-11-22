@@ -11,7 +11,7 @@ public class DatabaseProvider {
     private static final String DB_USER = "root"; // Ganti dengan username database Anda
     private static final String DB_PASSWORD = "BeLlA04_"; // Ganti dengan password database Anda
 
-    public static Connection getConnection() throws SQLException {
+    public Connection getConnection() throws SQLException {
         try {
             // Load driver MySQL
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -23,20 +23,17 @@ public class DatabaseProvider {
         }
     }
 
-    // Metode untuk insert data user ke tabel user_provider
     public void addUser(User newUser) throws SQLException {
-        String sql = "INSERT INTO user_provider (username, namaLengkap, tanggalLahir, namaIbu, password, role) " +
-                    "VALUES (?, ?, ?, ?, ?, ?)";
-        Connection conn = getConnection();
-        PreparedStatement stmt = conn.prepareStatement(sql);
-            // Set nilai untuk setiap parameter
-            stmt.setString(1, newUser.getnamaLengkap());
-            stmt.setDate(2, java.sql.Date.valueOf(newUser.gettglLahir()));
-            stmt.setString(3, newUser.getnamaIbu());
-            stmt.setString(4, newUser.getUsername());
-            stmt.setString(5, newUser.getPassword());
-            stmt.setString(6, newUser.getRoleUser());
-            // Eksekusi query
-            stmt.executeUpdate();
+        String query = "INSERT INTO user_provider (username, namaLengkap, tanggalLahir, namaIbu, password, role) VALUES (?, ?, ?, ?, ?, ?)";
+        try (Connection connection = getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setString(1, newUser.getUsername());
+            preparedStatement.setString(2, newUser.getnamaLengkap());
+            preparedStatement.setDate(3, java.sql.Date.valueOf(newUser.gettglLahir()));
+            preparedStatement.setString(4, newUser.getnamaIbu());
+            preparedStatement.setString(5, newUser.getPassword());
+            preparedStatement.setString(6, newUser.getRoleUser());
+            preparedStatement.executeUpdate();
+        }
     }
 }

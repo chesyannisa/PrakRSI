@@ -127,4 +127,8 @@ public class HalamanUtamaUI {
         button.addActionListener(actionListener); // Tambahkan ActionListener untuk menangkap klik tombol
         return button;
     }
+
+    public static void main(String[] args) {
+        new HalamanUtamaUI();
+    }
 }

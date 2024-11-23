@@ -134,7 +134,6 @@ public class HalamanRegisterUI extends JFrame {
         JPanel footerPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         JLabel footerLabel = new JLabel("Sudah punya akun? ");
         RoundedButton loginButton = new RoundedButton("Login", 10);
-        loginButton.setForeground(new Color(166, 179, 125));
         loginButton.setContentAreaFilled(false);
         footerPanel.add(footerLabel);
         footerPanel.add(loginButton);

@@ -85,7 +85,6 @@ public class HalamanLoginUI {
         JPanel footerPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         JLabel footerLabel = new JLabel("Belum punya akun? ");
         RoundedButton registerButton = new RoundedButton("Register", 10);
-        registerButton.setForeground(new Color(166, 179, 125));
         registerButton.setContentAreaFilled(false);
         footerPanel.add(footerLabel);
         footerPanel.add(registerButton);

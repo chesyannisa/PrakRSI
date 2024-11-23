@@ -29,9 +29,6 @@ public class HalamanAwalUI {
 
         // Membuat tombol Register
         RoundedButton registerButton = new RoundedButton("Register", 30);
-        registerButton.setBackground(new Color(166, 179, 125)); // Warna latar belakang tombol
-        registerButton.setForeground(Color.WHITE); // Warna teks tombol
-        registerButton.setFont(new Font("Nunito", Font.BOLD, 16)); // Font tombol
         registerButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 showHalamanRegister();
@@ -41,9 +38,6 @@ public class HalamanAwalUI {
 
         // Membuat tombol Login
         RoundedButton loginButton = new RoundedButton("Login", 30);
-        loginButton.setBackground(new Color(166, 179, 125)); // Warna latar belakang tombol
-        loginButton.setForeground(Color.WHITE); // Warna teks tombol
-        loginButton.setFont(new Font("Nunito", Font.BOLD, 16)); // Font tombol
         loginButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 showHalamanLogin();

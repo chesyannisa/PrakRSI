@@ -11,6 +11,9 @@ public class RoundedButton extends JButton {
         setContentAreaFilled(false); // Menghilangkan area default tombol
         setFocusPainted(false); // Menghilangkan garis fokus tombol
         setBorderPainted(false); // Menghilangkan border default tombol
+        setBackground(new Color(166, 179, 125));
+        setForeground(Color.WHITE);
+        setFont(new Font("Nunito", Font.BOLD, 16));
     }
 
     @Override

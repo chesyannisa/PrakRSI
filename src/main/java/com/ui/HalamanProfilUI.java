@@ -5,6 +5,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import src.main.java.com.controllers.ProfileController;
+import src.main.java.com.models.User;
 
 public class HalamanProfilUI {
 
@@ -58,10 +59,14 @@ public class HalamanProfilUI {
         userInfoPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         // Tambahkan data pengguna
-        addUserInfoRow(userInfoPanel, "Nama Lengkap     :", "*nama dari register*");
-        addUserInfoRow(userInfoPanel, "Username             :", "*username dari register*");
-        addUserInfoRow(userInfoPanel, "Kata Sandi            :", "********");
-        addUserInfoRow(userInfoPanel, "Nomor Telepon    :", "-");
+        ProfileController profileController = new ProfileController();
+        User user = profileController.getUserData("username"); // Replace with actual username
+        if (user != null) {
+            addUserInfoRow(userInfoPanel, "Nama Lengkap     :", user.getnamaLengkap());
+            addUserInfoRow(userInfoPanel, "Username             :", user.getUsername());
+            addUserInfoRow(userInfoPanel, "Kata Sandi            :", "********");
+            addUserInfoRow(userInfoPanel, "Nomor Telepon    :", "-");
+        }
 
         // Bagian bawah (Tombol)
         JPanel bottomPanel = new JPanel();
@@ -123,15 +128,6 @@ public class HalamanProfilUI {
         value.setFont(new Font("Nunito", Font.PLAIN, 14));
         label.setForeground(new Color(83, 53, 74));
         value.setForeground(new Color(83, 53, 74));
-    }
-
-    // Metode untuk mengatur gaya tombol
-    private void setButtonStyle(JButton button) {
-        button.setFont(new Font("Nunito", Font.BOLD, 14));
-        button.setBackground(new Color(239, 234, 221));
-        button.setForeground(new Color(83, 53, 74));
-        button.setFocusPainted(false);
-        button.setBorder(BorderFactory.createLineBorder(new Color(83, 53, 74)));
     }
 
     // Metode untuk menampilkan halaman edit profil

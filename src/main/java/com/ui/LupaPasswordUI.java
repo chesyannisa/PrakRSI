@@ -114,14 +114,14 @@ public class LupaPasswordUI {
 
     // Memeriksa data yang dimasukkan
     private void MemeriksaData(String namaLengkap, LocalDate tglLahir, String namaIbu) {
-            LoginController loginController = new LoginController();
-            if (loginController.checkData(namaLengkap, tglLahir, namaIbu)) {
-                loginController.tampilkanPesanSuksesLupa(namaLengkap, tglLahir, namaIbu);
-                showHalamanUtama();
-                frame.dispose();
-            } else {
-                loginController.tampilkanPesanErrorLupa();
-            }
+        LoginController loginController = new LoginController();
+        if (loginController.checkData(namaLengkap, tglLahir, namaIbu)) {
+            loginController.tampilkanPesanSuksesLupa(namaLengkap, tglLahir, namaIbu);
+            showHalamanUtama();
+            frame.dispose();
+        } else {
+            loginController.tampilkanPesanErrorLupa();
+        }
     }
 
     // Menampilkan pesan error

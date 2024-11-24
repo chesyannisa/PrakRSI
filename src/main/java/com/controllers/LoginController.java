@@ -50,7 +50,7 @@ public class LoginController {
         try {
             User user = databaseProvider.getUserByNamaLengkap(namaLengkap, tglLahir, namaIbu);
             if (user != null) {
-                LupaPasswordUI.pesanSukses(user.getUsername(), user.gettglLahir(), user.getnamaIbu());
+                LupaPasswordUI.pesanSukses(user.getUsername(), user.getTglLahir(), user.getNamaIbu());
             }
         } catch (SQLException e) {
             e.printStackTrace();

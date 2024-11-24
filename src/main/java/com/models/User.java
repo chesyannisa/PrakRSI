@@ -29,20 +29,20 @@ public class User {
     }
 
     // Getter dan Setter untuk tglLahir
-    public LocalDate gettglLahir() {
+    public LocalDate getTglLahir() {
         return tglLahir;
     }
-
-    public void settglLahir(LocalDate tglLahir) {
+    
+    public void setTglLahir(LocalDate tglLahir) {
         this.tglLahir = tglLahir;
     }
 
     // Getter dan Setter untuk namaIbu
-    public String getnamaIbu() {
+    public String getNamaIbu() {
         return namaIbu;
     }
 
-    public void setnamaIbu(String namaIbu) {
+    public void setNamaIbu(String namaIbu) {
         this.namaIbu = namaIbu;
     }
 

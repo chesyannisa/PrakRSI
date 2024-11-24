@@ -32,8 +32,8 @@ public class DatabaseProvider {
             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setString(1, newUser.getUsername());
             preparedStatement.setString(2, newUser.getnamaLengkap());
-            preparedStatement.setDate(3, java.sql.Date.valueOf(newUser.gettglLahir()));
-            preparedStatement.setString(4, newUser.getnamaIbu());
+            preparedStatement.setDate(3, java.sql.Date.valueOf(newUser.getTglLahir()));
+            preparedStatement.setString(4, newUser.getNamaIbu());
             preparedStatement.setString(5, newUser.getPassword());
             preparedStatement.setString(6, newUser.getRoleUser());
             preparedStatement.executeUpdate();

@@ -60,7 +60,7 @@ public class HalamanProfilUI {
         ProfileController profileController = new ProfileController();
         User user = profileController.getUserData("username"); // Replace with actual username
         if (user != null) {
-            addUserInfoRow(userInfoPanel, "Nama Lengkap     :", user.getnamaLengkap());
+            addUserInfoRow(userInfoPanel, "Nama Lengkap     :", user.getNamaLengkap());
             addUserInfoRow(userInfoPanel, "Username             :", user.getUsername());
             addUserInfoRow(userInfoPanel, "Kata Sandi            :", "********");
             addUserInfoRow(userInfoPanel, "Nomor Telepon    :", "-");
@@ -109,14 +109,14 @@ public class HalamanProfilUI {
     private void addUserInfoRow(JPanel panel, String labelText, String valueText) {
         JPanel rowPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 10, 5));
         rowPanel.setBackground(Color.WHITE);
-
+    
         JLabel label = new JLabel(labelText);
         JLabel value = new JLabel(valueText);
         setLabelStyle(label, value);
-
+    
         rowPanel.add(label);
         rowPanel.add(value);
-
+    
         panel.add(rowPanel);
     }
 

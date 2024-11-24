@@ -20,11 +20,11 @@ public class User {
     }
 
     // Getter dan Setter untuk namaLengkap
-    public String getnamaLengkap() {
+    public String getNamaLengkap() {
         return namaLengkap;
     }
 
-    public void setnamaLengkap(String namaLengkap) {
+    public void setNamaLengkap(String namaLengkap) {
         this.namaLengkap = namaLengkap;
     }
 

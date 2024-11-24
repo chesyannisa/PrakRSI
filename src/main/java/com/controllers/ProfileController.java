@@ -19,8 +19,8 @@ public class ProfileController {
     }
 
     // Method untuk menampilkan halaman edit profil
-    public void tampilkanHalamanEditProfil(User user) {
-        new HalamanEditProfilUI(user);
+    public void tampilkanHalamanEditProfil() {
+        new HalamanEditProfilUI();
     }
 
     // Method untuk mendapatkan data user dari database

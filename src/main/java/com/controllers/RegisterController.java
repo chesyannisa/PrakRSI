@@ -6,6 +6,12 @@ import src.main.java.com.ui.HalamanRegisterUI;
 import src.main.java.com.providers.DatabaseProvider;
 
 public class RegisterController {
+    private DatabaseProvider databaseProvider;
+
+    public RegisterController () {
+        this.databaseProvider = new DatabaseProvider();
+    }
+    
     // Method untuk menampilkan halaman register
     public void tampilkanHalamanRegister() {
         new HalamanRegisterUI();
@@ -13,7 +19,6 @@ public class RegisterController {
 
     // Method untuk memasukkan data user ke database
     public void InsertData(String namaLengkap, LocalDate tglLahir, String namaIbu, String username, String password, String roleUser) {
-        DatabaseProvider databaseProvider = new DatabaseProvider();
         User newUser = new User(namaLengkap, tglLahir, namaIbu, username, password, roleUser);
         try {
             databaseProvider.addUser(newUser);

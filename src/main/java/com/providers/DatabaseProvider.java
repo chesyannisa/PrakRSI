@@ -77,4 +77,15 @@ public class DatabaseProvider {
         }
         return null;
     }
+
+    public void updateUser(User user) throws SQLException {
+        String query = "UPDATE user_provider SET namaLengkap = ?, password = ? WHERE username = ?";
+        try (Connection connection = getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setString(1, user.getnamaLengkap());
+            preparedStatement.setString(2, user.getPassword());
+            preparedStatement.setString(3, user.getUsername());
+            preparedStatement.executeUpdate();
+        }
+    }
 }

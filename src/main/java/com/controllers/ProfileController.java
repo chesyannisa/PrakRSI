@@ -1,11 +1,11 @@
 package src.main.java.com.controllers;
+
 import src.main.java.com.ui.HalamanProfilUI;
-
 import java.sql.SQLException;
-
 import src.main.java.com.models.User;
 import src.main.java.com.providers.DatabaseProvider;
 import src.main.java.com.ui.HalamanEditProfilUI;
+
 public class ProfileController {
     private DatabaseProvider databaseProvider;
 
@@ -19,8 +19,8 @@ public class ProfileController {
     }
 
     // Method untuk menampilkan halaman edit profil
-    public void tampilkanHalamanEditProfil() {
-        new HalamanEditProfilUI();
+    public void tampilkanHalamanEditProfil(User user) {
+        new HalamanEditProfilUI(user);
     }
 
     // Method untuk mendapatkan data user dari database
@@ -33,4 +33,8 @@ public class ProfileController {
         }
     }
 
+    // Method untuk memperbarui data user di database
+    public void updateUser(User user) throws SQLException {
+        databaseProvider.updateUser(user);
+    }
 }

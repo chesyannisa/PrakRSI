@@ -1,10 +1,9 @@
 package src.main.java.com.controllers;
-
 import src.main.java.com.ui.HalamanProfilUI;
-import java.sql.SQLException;
+import src.main.java.com.ui.HalamanEditProfilUI;
 import src.main.java.com.models.User;
 import src.main.java.com.providers.DatabaseProvider;
-import src.main.java.com.ui.HalamanEditProfilUI;
+import java.sql.SQLException;
 
 public class ProfileController {
     private DatabaseProvider databaseProvider;

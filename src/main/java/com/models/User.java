@@ -1,4 +1,5 @@
 package src.main.java.com.models;
+
 import java.time.LocalDate;
 public class User {
     private String namaLengkap;

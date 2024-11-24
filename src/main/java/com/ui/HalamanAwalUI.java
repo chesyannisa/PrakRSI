@@ -1,8 +1,10 @@
 package src.main.java.com.ui;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import src.main.java.com.controllers.LoginController;
 import src.main.java.com.controllers.RegisterController;
 

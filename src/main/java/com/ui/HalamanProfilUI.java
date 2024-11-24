@@ -2,6 +2,7 @@ package src.main.java.com.ui;
 
 import javax.swing.*;
 import java.awt.*;
+
 import src.main.java.com.controllers.ProfileController;
 import src.main.java.com.models.User;
 

@@ -1,12 +1,14 @@
 package src.main.java.com.ui;
-import src.main.java.com.controllers.LoginController;
-import src.main.java.com.models.RegisterLogin;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
+
+import src.main.java.com.controllers.LoginController;
+import src.main.java.com.models.RegisterLogin;
 
 public class LupaPasswordUI {
     public RegisterLogin registerLogin;

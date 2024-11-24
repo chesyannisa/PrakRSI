@@ -1,6 +1,8 @@
 package src.main.java.com.controllers;
+
 import java.time.LocalDate;
 import java.sql.SQLException;
+
 import src.main.java.com.models.RegisterLogin;
 import src.main.java.com.models.User;
 import src.main.java.com.providers.DatabaseProvider;

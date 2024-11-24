@@ -1,9 +1,11 @@
 package src.main.java.com.controllers;
+
 import java.time.LocalDate;
-import src.main.java.com.models.User;
 import java.sql.SQLException;
-import src.main.java.com.ui.HalamanRegisterUI;
+
+import src.main.java.com.models.User;
 import src.main.java.com.providers.DatabaseProvider;
+import src.main.java.com.ui.HalamanRegisterUI;
 
 public class RegisterController {
     private DatabaseProvider databaseProvider;

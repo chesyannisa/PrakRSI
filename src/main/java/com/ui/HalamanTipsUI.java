@@ -36,53 +36,31 @@ public class HalamanTipsUI {
         topPanel.add(logoLabel, BorderLayout.WEST);
         topPanel.add(titleLabel, BorderLayout.CENTER);
 
-        // Panel untuk bagian bawah (fitur)
-        JPanel bottomPanel = new JPanel();
-        bottomPanel.setBackground(new Color(203, 215, 176)); // Warna latar belakang
-        bottomPanel.setLayout(new BoxLayout(bottomPanel, BoxLayout.Y_AXIS));
+        // Panel untuk daftar artikel (scrollable)
+        JPanel artikelPanel = new JPanel();
+        artikelPanel.setLayout(new BoxLayout(artikelPanel, BoxLayout.Y_AXIS));
+        artikelPanel.setBackground(new Color(203, 215, 176));
 
-        // Panel untuk tombol fitur
-        JPanel buttonPanel = new JPanel();
-        buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 100, 0)); // Jarak horizontal: 100px, vertikal: 0px
-        buttonPanel.setBackground(new Color(203, 215, 176));
+        // Tambahkan beberapa artikel ke dalam artikelPanel
+        for (int i = 1; i <= 10; i++) {
+            artikelPanel.add(createButtonWithLabel("src\\main\\resources\\images\\tipsntrik.png", "Artikel " + i, new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    // Tambahkan logika untuk membuka halaman artikel
+                    JOptionPane.showMessageDialog(null, "Artikel dibuka!");
+                }
+            }));
+            artikelPanel.add(Box.createRigidArea(new Dimension(0, 20))); // Jarak antar artikel
+        }
 
-        // Membuat panel untuk setiap tombol dan teks dengan ActionListener
-        buttonPanel.add(createButtonWithLabel("src\\\\main\\\\resources\\\\images\\\\tipsntrik.png", "Artikel 1", new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                frame.dispose(); // Menutup frame saat ini
-                // JadwalController jadwalController = new JadwalController();
-                // jadwalController.tampilkanHalamanJadwal();
-            }
-        }));
-
-        buttonPanel.add(createButtonWithLabel("src\\main\\resources\\images\\tipsntrik.png", "Artikel 2", new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                frame.dispose(); // Menutup frame saat ini
-                // TipsController tipsController = new TipsController();
-                // tipsController.tampilkanHalamanTips();
-            }
-        }));
-
-        buttonPanel.add(createButtonWithLabel("src\\main\\resources\\images\\tipsntrik.png", "Artikel 3", new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                frame.dispose(); // Menutup frame saat ini
-                // TipsController tipsController = new TipsController();
-                // tipsController.tampilkanHalamanTips();
-            }
-        }));
-
-        // Menambahkan elemen ke bottomPanel
-        bottomPanel.add(Box.createRigidArea(new Dimension(0, 20)));
-        // bottomPanel.add(instructionLabel);
-        bottomPanel.add(Box.createRigidArea(new Dimension(0, 20)));
-        bottomPanel.add(buttonPanel);
+        // Membuat JScrollPane untuk membungkus artikelPanel
+        JScrollPane scrollPane = new JScrollPane(artikelPanel);
+        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        scrollPane.getVerticalScrollBar().setUnitIncrement(16); // Kecepatan scroll
 
         // Tambahkan panel ke frame
         frame.add(topPanel, BorderLayout.NORTH);
-        frame.add(bottomPanel, BorderLayout.CENTER);
+        frame.add(scrollPane, BorderLayout.CENTER);
 
         // Tampilkan frame
         frame.setVisible(true);
@@ -95,7 +73,7 @@ public class HalamanTipsUI {
         panel.setBackground(new Color(203, 215, 176));
         panel.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5)); // Margin kecil
 
-        JButton button = createImageButton(iconPath, 100, 100, actionListener);
+        JButton button = createImageButton(iconPath, 350, 150, actionListener);
         button.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         JLabel label = new JLabel(labelText);

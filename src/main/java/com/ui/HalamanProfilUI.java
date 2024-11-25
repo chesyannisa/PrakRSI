@@ -18,21 +18,21 @@ public class HalamanProfilUI {
         // Bagian atas (Logo dan Judul)
         JPanel topPanel = new JPanel(new BorderLayout());
         topPanel.setBackground(new Color(203, 215, 176));
-        topPanel.setPreferredSize(new Dimension(0, 100));
+        topPanel.setPreferredSize(new Dimension(0, 150));
 
         // Logo di kiri atas
         ImageIcon logoIcon = new ImageIcon("src\\main\\resources\\images\\logo1.png"); // Path logo
-        Image logoImage = logoIcon.getImage().getScaledInstance(110, 110, Image.SCALE_SMOOTH); // Atur ukuran logo
+        Image logoImage = logoIcon.getImage().getScaledInstance(140, 140, Image.SCALE_SMOOTH); // Atur ukuran logo
         JLabel logoLabel = new JLabel(new ImageIcon(logoImage));
         logoLabel.setHorizontalAlignment(JLabel.LEFT);
-        logoLabel.setBorder(BorderFactory.createEmptyBorder(35, 20, 10, 10)); // Padding untuk logo
+        logoLabel.setBorder(BorderFactory.createEmptyBorder(35, 20, 10, 0)); // Padding untuk logo
 
         // Judul di tengah
         JLabel titleLabel = new JLabel("Profil");
         titleLabel.setFont(new Font("Nunito", Font.BOLD, 36));
         titleLabel.setForeground(new Color(83, 53, 74));
         titleLabel.setHorizontalAlignment(JLabel.CENTER);
-        titleLabel.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 150));
+        titleLabel.setBorder(BorderFactory.createEmptyBorder(50, 0, 0, 160));
 
         topPanel.add(logoLabel, BorderLayout.WEST);
         topPanel.add(titleLabel, BorderLayout.CENTER);
@@ -69,7 +69,7 @@ public class HalamanProfilUI {
 
         // Bagian bawah (Tombol)
         JPanel bottomPanel = new JPanel();
-        bottomPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 50, 100));
+        bottomPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 50, 50));
         bottomPanel.setBackground(new Color(203, 215, 176));
 
         RoundedButton editButton = new RoundedButton ("Edit Profil",30);
@@ -92,7 +92,7 @@ public class HalamanProfilUI {
         bottomPanel.add(backButton);
 
         // Menambahkan semua komponen ke frame
-        centerPanel.add(Box.createRigidArea(new Dimension(0, 5))); // Jarak
+        centerPanel.add(Box.createRigidArea(new Dimension(0, 0))); // Jarak
         centerPanel.add(userTypeLabel);
         centerPanel.add(Box.createRigidArea(new Dimension(0, 20))); // Jarak
         centerPanel.add(userInfoPanel);

@@ -77,11 +77,10 @@ public class HalamanProfilUI {
         RoundedButton backButton = new RoundedButton ("Back", 30);
         backButton.setForeground(new Color(83, 53, 74));
 
-
         // ActionListener untuk tombol
         editButton.addActionListener(e -> {
             showHalamanEditProfil();
-            JOptionPane.showMessageDialog(frame, "Edit Profil clicked!");
+            frame.dispose();
         });
 
         backButton.addActionListener(e -> {

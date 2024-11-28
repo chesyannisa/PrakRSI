@@ -9,16 +9,17 @@ public class User {
     private String username;
     private String password;
     private String roleUser;
+    private String phoneNumber;
 
     // Constructor
-    public User(String namaLengkap, LocalDate tglLahir, String namaIbu, String username, String password, String roleUser) {
+    public User(String namaLengkap, LocalDate tglLahir, String namaIbu, String username, String password, String roleUser, String phoneNumber) {
         this.namaLengkap = namaLengkap;
         this.tglLahir = tglLahir;
         this.namaIbu = namaIbu;
         this.username = username;
         this.password = password;
         this.roleUser = roleUser;
-    
+        this.phoneNumber = phoneNumber;
     }
 
     // Getter dan Setter untuk namaLengkap
@@ -70,7 +71,17 @@ public class User {
     public String getRoleUser(){
         return roleUser;
     }
+    
     public void setRoleUser(String roleUser) {
         this.roleUser = roleUser;
+    }
+
+    // Getter dan Setter untuk phoneNumber
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 }

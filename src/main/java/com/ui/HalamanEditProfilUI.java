@@ -1,6 +1,9 @@
 package src.main.java.com.ui;
 
 import javax.swing.*;
+
+import src.main.java.com.controllers.ProfileController;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -102,6 +105,14 @@ public class HalamanEditProfilUI {
         saveButton.setPreferredSize(buttonSize); // Ukuran seragam
         ButtonPanel.add(saveButton, gbcButton);
 
+        // Tambahkan ActionListener ke tombol Simpan
+        saveButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                SimpanProfil();
+            }
+        });
+
         // Tombol Back
         gbcButton.gridy = 1; // Baris kedua
         RoundedButton cancelButton = new RoundedButton("Back", 30);
@@ -127,6 +138,17 @@ public class HalamanEditProfilUI {
 
         frame.add(topPanel, BorderLayout.NORTH);
         frame.setVisible(true);
+    }
+
+    // Metode SimpanProfil
+    private void SimpanProfil() {
+        ProfileController profilController = new ProfileController();
+        profilController.SaveDataChange();
+    }
+
+    // Menampilkan pesan error
+    public static void pesanError() {
+        JOptionPane.showMessageDialog(null, "Terjadi kesalahan saat menyimpan data", "Error", JOptionPane.ERROR_MESSAGE);
     }
 
     public static void main(String[] args) {

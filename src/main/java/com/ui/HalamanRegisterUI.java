@@ -183,7 +183,7 @@ public class HalamanRegisterUI extends JFrame {
     // Menyimpan data ke database
     public void MenyimpanData(String namaLengkap, LocalDate tglLahir, String namaIbu, String username, String Password, String roleUser) {
         RegisterController registerController = new RegisterController();
-        registerController.InsertData(namaLengkap, tglLahir, namaIbu, username, Password, roleUser);
+        registerController.InsertData(namaLengkap, tglLahir, namaIbu, username, Password, roleUser, "");
     }
 
     // Menampilkan pesan error

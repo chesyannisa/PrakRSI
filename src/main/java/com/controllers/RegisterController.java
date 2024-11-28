@@ -20,8 +20,8 @@ public class RegisterController {
     }
 
     // Method untuk memasukkan data user ke database
-    public void InsertData(String namaLengkap, LocalDate tglLahir, String namaIbu, String username, String password, String roleUser) {
-        User newUser = new User(namaLengkap, tglLahir, namaIbu, username, password, roleUser);
+    public void InsertData(String namaLengkap, LocalDate tglLahir, String namaIbu, String username, String password, String roleUser, String phoneNumber) {
+        User newUser = new User(namaLengkap, tglLahir, namaIbu, username, password, roleUser, phoneNumber);
         try {
             databaseProvider.addUser(newUser);
         } catch (SQLException e) {

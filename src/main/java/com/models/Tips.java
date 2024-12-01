@@ -4,14 +4,14 @@ public class Tips {
     private int id;
     private String judul;
     private String penulis;
-    private String isi;
+    private String gambar; // URL atau path gambar
     private String url;
 
-    public Tips(int id, String judul, String penulis, String isi, String url) {
+    public Tips(int id, String judul, String penulis, String gambar, String url) {
         this.id = id;
         this.judul = judul;
         this.penulis = penulis;
-        this.isi = isi;
+        this.gambar = gambar;
         this.url = url;
     }
 
@@ -19,32 +19,16 @@ public class Tips {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public String getJudul() {
         return judul;
-    }
-
-    public void setJudul(String judul) {
-        this.judul = judul;
     }
 
     public String getPenulis() {
         return penulis;
     }
 
-    public void setPenulis(String penulis) {
-        this.penulis = penulis;
-    }
-
-    public String getIsi() {
-        return isi;
-    }
-
-    public void setIsi(String isi) {
-        this.isi = isi;
+    public String getGambar() {
+        return gambar;
     }
 
     public String getUrl() {

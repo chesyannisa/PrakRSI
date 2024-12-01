@@ -24,6 +24,7 @@ public class HalamanProfilUI {
         ImageIcon logoIcon = new ImageIcon("src\\main\\resources\\images\\logo1.png"); // Path logo
         Image logoImage = logoIcon.getImage().getScaledInstance(140, 140, Image.SCALE_SMOOTH); // Atur ukuran logo
         JButton logoButton = new JButton(new ImageIcon(logoImage));
+        logoButton.setBorder(BorderFactory.createEmptyBorder(70, 20, 10, 10));
         logoButton.setBorderPainted(false); // Hilangkan border tombol
         logoButton.setFocusPainted(false);  // Hilangkan highlight fokus
         logoButton.setContentAreaFilled(false); // Hilangkan background tombol

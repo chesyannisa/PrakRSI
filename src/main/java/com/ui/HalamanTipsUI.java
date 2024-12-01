@@ -58,7 +58,7 @@ public class HalamanTipsUI {
             final int artikelId = i;
             Tips tips = tipsController.getTipsById(artikelId);
             if (tips != null) {
-                // Menggunakan gambar dari parameter 'gambar' di kelas Tips
+                // Menggunakan gambar dari parameter 'gambar' di kelas Tips pp
                 artikelPanel.add(createButtonWithLabel(tips.getGambar(), tips.getJudul(), e -> openURL(tips.getUrl())));
             } else {
                 artikelPanel.add(createButtonWithLabel("src\\main\\resources\\images\\tipsntrik.png", "Artikel belum ada", e -> tipsController.tampilkanPesanError()));

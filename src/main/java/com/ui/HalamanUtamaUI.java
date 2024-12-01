@@ -59,28 +59,27 @@ public class HalamanUtamaUI {
         buttonPanel.add(createButtonWithLabel("src\\main\\resources\\images\\jadwal.png", "Jadwal", new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
-                frame.dispose(); // Menutup frame saat ini
                 JadwalController jadwalController = new JadwalController();
                 jadwalController.tampilkanHalamanJadwal();
+                frame.dispose();
             }
         }));
 
         buttonPanel.add(createButtonWithLabel("src\\main\\resources\\images\\tipsntrik.png", "Tips & Trik", new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                frame.dispose(); // Menutup frame saat ini
                 TipsController tipsController = new TipsController();
                 tipsController.tampilkanHalamanTips();
+                frame.dispose();
             }
         }));
 
         buttonPanel.add(createButtonWithLabel("src\\main\\resources\\images\\profil.png", "Profil", new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                frame.dispose(); // Menutup frame saat ini
                 ProfileController profilController = new ProfileController();
                 profilController.tampilkanHalamanProfil();
+                frame.dispose();
             }
         }));
 

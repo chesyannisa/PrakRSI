@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import src.main.java.com.models.Jadwal;
-import src.main.java.com.models.Tips;
 import src.main.java.com.models.User;
 
 public class DatabaseProvider {
@@ -93,25 +92,6 @@ public class DatabaseProvider {
             preparedStatement.setString(4, user.getUsername());
             preparedStatement.executeUpdate();
         }
-    }
-
-    public Tips getTipsbyId(int tipsId) {
-        try (Connection connection = getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM tips WHERE id = ?")) {
-            preparedStatement.setInt(1, tipsId);
-            try (ResultSet resultSet = preparedStatement.executeQuery()) {
-                if (resultSet.next()) {
-                    String judul = resultSet.getString("judul");
-                    String penulis = resultSet.getString("penulis");
-                    String isi = resultSet.getString("isi");
-                    String url = resultSet.getString("url");
-                    return new Tips(tipsId, judul, penulis, isi, url);
-                }
-            }
-            } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return null;
     }
 
     public List<Jadwal> getAllJadwal() throws SQLException {

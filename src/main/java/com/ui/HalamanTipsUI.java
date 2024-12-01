@@ -28,9 +28,23 @@ public class HalamanTipsUI {
         // Logo di kiri atas
         ImageIcon logoIcon = new ImageIcon("src\\main\\resources\\images\\logo1.png"); // Path logo
         Image logoImage = logoIcon.getImage().getScaledInstance(110, 110, Image.SCALE_SMOOTH); // Atur ukuran logo
-        JLabel logoLabel = new JLabel(new ImageIcon(logoImage));
-        logoLabel.setHorizontalAlignment(JLabel.LEFT);
-        logoLabel.setBorder(BorderFactory.createEmptyBorder(35, 20, 10, 10)); // Padding untuk logo
+        ImageIcon scaledLogoIcon = new ImageIcon(logoImage);
+
+        // Gunakan JButton untuk logo
+        JButton logoButton = new JButton(scaledLogoIcon);
+        logoButton.setBorderPainted(false); // Hilangkan border tombol
+        logoButton.setFocusPainted(false);  // Hilangkan efek fokus
+        logoButton.setContentAreaFilled(false); // Hilangkan background tombol
+        logoButton.setCursor(new Cursor(Cursor.HAND_CURSOR)); // Ubah kursor menjadi "tangan"
+
+        // Tambahkan ActionListener untuk kembali ke halaman utama
+        logoButton.addActionListener(e -> {
+            new HalamanUtamaUI(); // Panggil halaman utama
+            frame.dispose();      // Tutup halaman saat ini
+        });
+
+        topPanel.add(logoButton, BorderLayout.WEST); // Tambahkan tombol logo ke panel atas
+
 
         // Judul di tengah
         JLabel titleLabel = new JLabel("Tips & Trik Ramah Lingkungan");
@@ -39,7 +53,6 @@ public class HalamanTipsUI {
         titleLabel.setHorizontalAlignment(JLabel.CENTER);
         titleLabel.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 150));
 
-        topPanel.add(logoLabel, BorderLayout.WEST);
         topPanel.add(titleLabel, BorderLayout.CENTER);
 
         // Panel untuk daftar artikel (scrollable)

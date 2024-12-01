@@ -62,7 +62,7 @@ public class HalamanJadwalUI {
 
         // Menambahkan item jadwal ke panel
         for (int i = 0; i < 10; i++) {
-            schedulePanel.add(createScheduleCard());
+            schedulePanel.add(createScheduleCard(frame));
         }
 
         // Membungkus schedulePanel dengan JScrollPane
@@ -80,7 +80,7 @@ public class HalamanJadwalUI {
     }
 
     // Metode untuk membuat kartu jadwal
-    private JPanel createScheduleCard() {
+    private JPanel createScheduleCard(JFrame parentFrame) {
         JPanel cardPanel = new JPanel();
         cardPanel.setLayout(new BorderLayout());
         cardPanel.setBackground(Color.WHITE);
@@ -108,6 +108,14 @@ public class HalamanJadwalUI {
         Image scheduleImage = scheduleImageIcon.getImage().getScaledInstance(300, 150, Image.SCALE_SMOOTH); // Atur ukuran gambar
         JLabel scheduleImageLabel = new JLabel(new ImageIcon(scheduleImage));
 
+        // Tombol detail
+        JButton detailButton = new JButton("Detail");
+        detailButton.setBackground(new Color(203, 215, 176));
+        detailButton.setForeground(new Color(83, 53, 74));
+        detailButton.setFocusPainted(false);
+        detailButton.setFont(new Font("Nunito", Font.BOLD, 14));
+        detailButton.addActionListener(e -> showDetailDialog(parentFrame));
+
         // Panel atas untuk teks
         JPanel textPanel = new JPanel();
         textPanel.setLayout(new BoxLayout(textPanel, BoxLayout.Y_AXIS));
@@ -119,8 +127,40 @@ public class HalamanJadwalUI {
         // Menambahkan komponen ke cardPanel
         cardPanel.add(textPanel, BorderLayout.NORTH);
         cardPanel.add(scheduleImageLabel, BorderLayout.CENTER);
+        cardPanel.add(detailButton, BorderLayout.SOUTH);
 
         return cardPanel;
+    }
+
+    // Metode untuk menampilkan dialog detail
+    private void showDetailDialog(JFrame parentFrame) {
+        JDialog detailDialog = new JDialog(parentFrame, "Detail Informasi", true);
+        detailDialog.setSize(400, 300);
+        detailDialog.setLayout(new BorderLayout());
+        detailDialog.setLocationRelativeTo(parentFrame);
+
+        // Konten dialog
+        JPanel contentPanel = new JPanel();
+        contentPanel.setBackground(new Color(239, 234, 221));
+        contentPanel.setLayout(new BoxLayout(contentPanel, BoxLayout.Y_AXIS));
+        contentPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+
+        // Menambahkan informasi detail
+        contentPanel.add(new JLabel("Hari dan Jam: Senin, 23 November 2023, 16:00 WIB"));
+        contentPanel.add(new JLabel("Nama Pusat Daur Ulang: TPA Lorem Ipsum"));
+        contentPanel.add(new JLabel("Alamat: Jl. Raya X No.4, Malang"));
+        contentPanel.add(new JLabel("Kategori: Umum"));
+        contentPanel.add(new JLabel("Nama Petugas: P.A Gusman, Sdr. Fadli, ..."));
+
+        // Tombol tutup
+        JButton closeButton = new JButton("Tutup");
+        closeButton.addActionListener(e -> detailDialog.dispose());
+        closeButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        detailDialog.add(contentPanel, BorderLayout.CENTER);
+        detailDialog.add(closeButton, BorderLayout.SOUTH);
+
+        detailDialog.setVisible(true);
     }
 
     public static void main(String[] args) {

@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import src.main.java.com.controllers.ProfileController;
+import src.main.java.com.controllers.JadwalController;
 import src.main.java.com.controllers.TipsController;
 import src.main.java.com.ui.HalamanTipsUI;
 
@@ -58,9 +59,10 @@ public class HalamanUtamaUI {
         buttonPanel.add(createButtonWithLabel("src\\main\\resources\\images\\jadwal.png", "Jadwal", new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
                 frame.dispose(); // Menutup frame saat ini
-                // JadwalController jadwalController = new JadwalController();
-                // jadwalController.tampilkanHalamanJadwal();
+                JadwalController jadwalController = new JadwalController();
+                jadwalController.tampilkanHalamanJadwal();
             }
         }));
 

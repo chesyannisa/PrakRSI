@@ -1,5 +1,7 @@
 package src.main.java.com.ui;
 
+import src.main.java.com.models.Jadwal;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
@@ -20,7 +22,7 @@ public class HalamanJadwalUI {
         topPanel.setPreferredSize(new Dimension(0, 100));
 
         // Logo di kiri atas
-        ImageIcon logoIcon = new ImageIcon("src\\main\\resources\\images\\logo1.png"); // Ganti path logo
+        ImageIcon logoIcon = new ImageIcon("src\\main\\resources\\images\\logo1.png");
         Image logoImage = logoIcon.getImage().getScaledInstance(80, 80, Image.SCALE_SMOOTH);
         JLabel logoLabel = new JLabel(new ImageIcon(logoImage));
         logoLabel.setHorizontalAlignment(JLabel.LEFT);
@@ -36,12 +38,12 @@ public class HalamanJadwalUI {
 
             @Override
             public void mouseEntered(MouseEvent e) {
-                logoLabel.setCursor(new Cursor(Cursor.HAND_CURSOR)); // Ubah kursor menjadi tangan
+                logoLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
             }
 
             @Override
             public void mouseExited(MouseEvent e) {
-                logoLabel.setCursor(new Cursor(Cursor.DEFAULT_CURSOR)); // Kembalikan kursor ke default
+                logoLabel.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
             }
         });
 
@@ -55,32 +57,42 @@ public class HalamanJadwalUI {
         topPanel.add(titleLabel, BorderLayout.CENTER);
 
         // Bagian tengah (Scroll Panel untuk Jadwal)
-        JPanel schedulePanel = new JPanel();
-        schedulePanel.setLayout(new GridLayout(0, 2, 20, 20)); // Layout grid untuk 2 kolom
-        schedulePanel.setBackground(new Color(234, 242, 227));
-        schedulePanel.setBorder(BorderFactory.createEmptyBorder(20, 50, 20, 50)); // Padding untuk keseluruhan panel
+        JPanel jadwalPanel = new JPanel();
+        jadwalPanel.setLayout(new GridLayout(0, 2, 20, 20));
+        jadwalPanel.setBackground(new Color(234, 242, 227));
+        jadwalPanel.setBorder(BorderFactory.createEmptyBorder(20, 50, 20, 50));
 
-        // Menambahkan item jadwal ke panel
-        for (int i = 0; i < 10; i++) {
-            schedulePanel.add(createScheduleCard(frame));
+        // Data jadwal
+        Jadwal[] jadwals = {
+            new Jadwal(1, "TPA Lorem Ipsum", "Senin, 23 November 2024", "08.00 WIB",
+                    "Jl. Raya X No.4, Malang", "Umum", "P.A Gusman, Sdr. Fadli", 
+                    "src\\main\\resources\\images\\tpa1.png"),
+            new Jadwal(2, "TPA Situbondo", "Selasa, 24 November 2024", "09.00 WIB",
+                    "Jl. Raya Y No.5, Situbondo", "Khusus", "Sdr. Zaki, Sdr. Daffa", 
+                    "src\\main\\resources\\images\\tpa2.png")
+        };
+
+        // Tambahkan kartu ke panel
+        for (Jadwal jadwal : jadwals) {
+            jadwalPanel.add(createJadwalCard(frame, jadwal));
         }
 
-        // Membungkus schedulePanel dengan JScrollPane
-        JScrollPane scrollPane = new JScrollPane(schedulePanel);
+        // Scroll panel
+        JScrollPane scrollPane = new JScrollPane(jadwalPanel);
         scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
-        scrollPane.getVerticalScrollBar().setUnitIncrement(16); // Kecepatan scroll
+        scrollPane.getVerticalScrollBar().setUnitIncrement(16);
 
-        // Menambahkan komponen ke frame
+        // Tambahkan komponen ke frame
         frame.add(topPanel, BorderLayout.NORTH);
         frame.add(scrollPane, BorderLayout.CENTER);
 
-        // Menampilkan frame
+        // Tampilkan frame
         frame.setVisible(true);
     }
 
-    // Metode untuk membuat kartu jadwal
-    private JPanel createScheduleCard(JFrame parentFrame) {
+    // Membuat kartu jadwal
+    private JPanel createJadwalCard(JFrame parentFrame, Jadwal jadwal) {
         JPanel cardPanel = new JPanel();
         cardPanel.setLayout(new BorderLayout());
         cardPanel.setBackground(Color.WHITE);
@@ -90,23 +102,23 @@ public class HalamanJadwalUI {
         ));
 
         // Judul jadwal
-        JLabel titleLabel = new JLabel("TPA Lorem Ipsum");
+        JLabel titleLabel = new JLabel(jadwal.getJudul());
         titleLabel.setFont(new Font("Nunito", Font.BOLD, 18));
         titleLabel.setForeground(new Color(83, 53, 74));
 
         // Informasi jadwal
-        JLabel dateLabel = new JLabel("Senin, 23 November 2004");
+        JLabel dateLabel = new JLabel(jadwal.getTanggal());
         dateLabel.setFont(new Font("Nunito", Font.PLAIN, 14));
         dateLabel.setForeground(new Color(83, 53, 74));
 
-        JLabel timeLabel = new JLabel("08.00 WIB");
+        JLabel timeLabel = new JLabel(jadwal.getWaktu());
         timeLabel.setFont(new Font("Nunito", Font.PLAIN, 14));
         timeLabel.setForeground(new Color(83, 53, 74));
 
         // Gambar jadwal
-        ImageIcon scheduleImageIcon = new ImageIcon("src\\main\\resources\\images\\tpa1.png"); // Ganti path gambar
-        Image scheduleImage = scheduleImageIcon.getImage().getScaledInstance(300, 150, Image.SCALE_SMOOTH); // Atur ukuran gambar
-        JLabel scheduleImageLabel = new JLabel(new ImageIcon(scheduleImage));
+        ImageIcon jadwalImageIcon = new ImageIcon(jadwal.getPathGambar());
+        Image jadwalImage = jadwalImageIcon.getImage().getScaledInstance(300, 150, Image.SCALE_SMOOTH);
+        JLabel jadwalImageLabel = new JLabel(new ImageIcon(jadwalImage));
 
         // Tombol detail
         JButton detailButton = new JButton("Detail");
@@ -114,7 +126,7 @@ public class HalamanJadwalUI {
         detailButton.setForeground(new Color(83, 53, 74));
         detailButton.setFocusPainted(false);
         detailButton.setFont(new Font("Nunito", Font.BOLD, 14));
-        detailButton.addActionListener(e -> showDetailDialog(parentFrame));
+        detailButton.addActionListener(e -> showDetailDialog(parentFrame, jadwal));
 
         // Panel atas untuk teks
         JPanel textPanel = new JPanel();
@@ -124,44 +136,40 @@ public class HalamanJadwalUI {
         textPanel.add(dateLabel);
         textPanel.add(timeLabel);
 
-        // Menambahkan komponen ke cardPanel
         cardPanel.add(textPanel, BorderLayout.NORTH);
-        cardPanel.add(scheduleImageLabel, BorderLayout.CENTER);
+        cardPanel.add(jadwalImageLabel, BorderLayout.CENTER);
         cardPanel.add(detailButton, BorderLayout.SOUTH);
 
         return cardPanel;
     }
 
-    // Metode untuk menampilkan dialog detail
-    private void showDetailDialog(JFrame parentFrame) {
+    // Menampilkan detail dialog
+    private void showDetailDialog(JFrame parentFrame, Jadwal jadwal) {
         JDialog detailDialog = new JDialog(parentFrame, "Detail Informasi", true);
         detailDialog.setSize(400, 300);
         detailDialog.setLayout(new BorderLayout());
         detailDialog.setLocationRelativeTo(parentFrame);
 
-        // Konten dialog
         JPanel contentPanel = new JPanel();
         contentPanel.setBackground(new Color(239, 234, 221));
         contentPanel.setLayout(new BoxLayout(contentPanel, BoxLayout.Y_AXIS));
         contentPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
 
-        // Menambahkan informasi detail
-        contentPanel.add(new JLabel("Hari dan Jam: Senin, 23 November 2023, 16:00 WIB"));
-        contentPanel.add(new JLabel("Nama Pusat Daur Ulang: TPA Lorem Ipsum"));
-        contentPanel.add(new JLabel("Alamat: Jl. Raya X No.4, Malang"));
-        contentPanel.add(new JLabel("Kategori: Umum"));
-        contentPanel.add(new JLabel("Nama Petugas: P.A Gusman, Sdr. Fadli, ..."));
+        contentPanel.add(new JLabel("Hari dan Jam: " + jadwal.getTanggal() + ", " + jadwal.getWaktu()));
+        contentPanel.add(new JLabel("Nama Pusat Daur Ulang: " + jadwal.getJudul()));
+        contentPanel.add(new JLabel("Alamat: " + jadwal.getAlamat()));
+        contentPanel.add(new JLabel("Kategori: " + jadwal.getKategori()));
+        contentPanel.add(new JLabel("Nama Petugas: " + jadwal.getPetugas()));
 
-        // Tombol tutup
-        JButton closeButton = new JButton("Tutup");
+        JButton closeButton = new JButton("Close");
         closeButton.addActionListener(e -> detailDialog.dispose());
-        closeButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         detailDialog.add(contentPanel, BorderLayout.CENTER);
         detailDialog.add(closeButton, BorderLayout.SOUTH);
 
         detailDialog.setVisible(true);
     }
+
 
     public static void main(String[] args) {
         new HalamanJadwalUI();

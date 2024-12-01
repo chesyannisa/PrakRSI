@@ -102,7 +102,8 @@ public class DatabaseProvider {
                     String judul = resultSet.getString("judul");
                     String penulis = resultSet.getString("penulis");
                     String isi = resultSet.getString("isi");
-                    return new Tips(tipsId, judul, penulis, isi);
+                    String url = resultSet.getString("url");
+                    return new Tips(tipsId, judul, penulis, isi, url);
                 }
             }
             } catch (SQLException e) {

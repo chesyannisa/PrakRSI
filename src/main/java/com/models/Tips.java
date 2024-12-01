@@ -5,12 +5,14 @@ public class Tips {
     private String judul;
     private String penulis;
     private String isi;
+    private String url;
 
-    public Tips(int id, String judul, String penulis, String isi) {
+    public Tips(int id, String judul, String penulis, String isi, String url) {
         this.id = id;
         this.judul = judul;
         this.penulis = penulis;
         this.isi = isi;
+        this.url = url;
     }
 
     public int getId() {
@@ -43,5 +45,9 @@ public class Tips {
 
     public void setIsi(String isi) {
         this.isi = isi;
+    }
+
+    public String getUrl() {
+        return url;
     }
 }

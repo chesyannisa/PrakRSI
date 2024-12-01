@@ -6,6 +6,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import src.main.java.com.controllers.ProfileController;
+import src.main.java.com.controllers.TipsController;
+import src.main.java.com.ui.HalamanTipsUI;
+
 
 public class HalamanUtamaUI {
 
@@ -65,8 +68,8 @@ public class HalamanUtamaUI {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frame.dispose(); // Menutup frame saat ini
-                //TipsController tipsController = new TipsController();
-                //tipsController.tampilkanHalamanTips();
+                TipsController tipsController = new TipsController();
+                tipsController.tampilkanHalamanTips();
             }
         }));
 

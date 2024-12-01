@@ -156,6 +156,19 @@ public class HalamanRegisterUI extends JFrame {
         String namaLengkap = namaLengkapField.getText();
         String tglLahirText = tglLahirField.getText();
         LocalDate tglLahir = null;
+        String namaIbu = namaIbuField.getText();
+        String username = usernameField.getText();
+        String password = new String(passwordField.getPassword());
+        String konfirmasiPassword = new String(konfirmasiPasswordField.getPassword());
+        String roleUser = masyarakatButton.isSelected() ? "Masyarakat" : "Pengelola";
+
+        if (namaLengkap.isEmpty() || tglLahirText.isEmpty() || namaIbu.isEmpty() ||
+        username.isEmpty() || password.isEmpty() || konfirmasiPassword.isEmpty() ||
+        (!masyarakatButton.isSelected() && !pengelolaButton.isSelected())) {
+        JOptionPane.showMessageDialog(this, "Semua field wajib diisi.", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+        }
+
         try {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd"); // Adjust the pattern as needed
             tglLahir = LocalDate.parse(tglLahirText, formatter);
@@ -163,11 +176,6 @@ public class HalamanRegisterUI extends JFrame {
             JOptionPane.showMessageDialog(this, "Tanggal lahir tidak valid. Format yang benar adalah yyyy-MM-dd.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
-        String namaIbu = namaIbuField.getText();
-        String username = usernameField.getText();
-        String password = new String(passwordField.getPassword());
-        String konfirmasiPassword = new String(konfirmasiPasswordField.getPassword());
-        String roleUser = masyarakatButton.isSelected() ? "Masyarakat" : "Pengelola";
 
         if (!password.equals(konfirmasiPassword)) {
             registerController.tampilkanPesanErrorKonfirmasi();

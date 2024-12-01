@@ -169,6 +169,21 @@ public class HalamanTipsUI {
         authorLabel.setHorizontalAlignment(JLabel.CENTER);
         authorLabel.setBorder(BorderFactory.createEmptyBorder(0, 0, 20, 0));
 
+        JPanel bottomPanel = new JPanel();
+        bottomPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 50, 50));
+        bottomPanel.setBackground(new Color(203, 215, 176));
+
+        RoundedButton backButton = new RoundedButton("Back", 30);
+        backButton.setForeground(new Color(83, 53, 74));
+
+        // ActionListener untuk tombol "Back"
+        backButton.addActionListener(e -> {
+            new HalamanUtamaUI(); // Ganti dengan halaman utama Anda
+            frame.dispose();
+        });
+        bottomPanel.add(backButton);
+        frame.add(bottomPanel, BorderLayout.SOUTH);
+
         // Konten artikel
         JTextArea contentArea = new JTextArea(tips.getIsi());
         contentArea.setFont(new Font("Nunito", Font.PLAIN, 18));
@@ -185,13 +200,13 @@ public class HalamanTipsUI {
 
         frame.add(topPanel, BorderLayout.NORTH);
         frame.add(contentScrollPane, BorderLayout.CENTER);
+        frame.add(bottomPanel, BorderLayout.SOUTH);
 
         frame.setVisible(true);
     }
 
     public static void main(String[] args) {
         new HalamanTipsUI();
-        Tips tips = new Tips(1, "Judul Artikel", "Penulis","Isi");
-        new HalamanTipsUI(tips);
+        Tips tips = new Tips(1, "Judul Artikel", "Penulis","Isi", "url");
     }
 }

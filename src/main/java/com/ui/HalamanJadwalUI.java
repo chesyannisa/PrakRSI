@@ -1,15 +1,21 @@
 package src.main.java.com.ui;
 
 import src.main.java.com.models.Jadwal;
+import src.main.java.com.controllers.JadwalController;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.List;
 
 public class HalamanJadwalUI {
 
+    private JadwalController jadwalController;
+
     public HalamanJadwalUI() {
+        jadwalController = new JadwalController();
+
         // Membuat frame
         JFrame frame = new JFrame("ResikinAE: Jadwal");
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -62,15 +68,8 @@ public class HalamanJadwalUI {
         jadwalPanel.setBackground(new Color(234, 242, 227));
         jadwalPanel.setBorder(BorderFactory.createEmptyBorder(20, 50, 20, 50));
 
-        // Data jadwal
-        Jadwal[] jadwals = {
-            new Jadwal(1, "TPA Lorem Ipsum", "Senin, 23 November 2024", "08.00 WIB",
-                    "Jl. Raya X No.4, Malang", "Umum", "P.A Gusman, Sdr. Fadli", 
-                    "src\\main\\resources\\images\\tpa1.png"),
-            new Jadwal(2, "TPA Situbondo", "Selasa, 24 November 2024", "09.00 WIB",
-                    "Jl. Raya Y No.5, Situbondo", "Khusus", "Sdr. Zaki, Sdr. Daffa", 
-                    "src\\main\\resources\\images\\tpa2.png")
-        };
+        // Fetch data jadwal from controller
+        List<Jadwal> jadwals = getJadwal();
 
         // Tambahkan kartu ke panel
         for (Jadwal jadwal : jadwals) {
@@ -170,6 +169,15 @@ public class HalamanJadwalUI {
         detailDialog.setVisible(true);
     }
 
+    // Mendapatkan data jadwal dari controller
+    private List<Jadwal> getJadwal() {
+        return jadwalController.getJadwal();
+    }
+
+    // Menampilkan pesan error
+    public static void showPesanError() {
+        JOptionPane.showMessageDialog(null, "Terjadi kesalahan saat mengambil data dari database", "Error", JOptionPane.ERROR_MESSAGE);
+    }
 
     public static void main(String[] args) {
         new HalamanJadwalUI();

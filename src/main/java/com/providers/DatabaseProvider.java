@@ -9,6 +9,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import src.main.java.com.models.Jadwal;
 import src.main.java.com.models.Tips;
 import src.main.java.com.models.User;
 
@@ -21,6 +22,7 @@ public class DatabaseProvider {
     private static final String SELECT_USER_BY_NAMA_LENGKAP = "SELECT * FROM user_provider WHERE namaLengkap = ? AND tanggalLahir = ? AND namaIbu = ?";
     private static final String INSERT_USER = "INSERT INTO user_provider (username, namaLengkap, tanggalLahir, namaIbu, password, role, phoneNumber) VALUES (?, ?, ?, ?, ?, ?, ?)";
     private static final String UPDATE_USER = "UPDATE user_provider SET namaLengkap = ?, password = ?, phoneNumber = ? WHERE username = ?";
+    private static final String SELECT_ALL_JADWAL = "SELECT * FROM jadwal";
 
     public Connection getConnection() throws SQLException {
         try {
@@ -110,5 +112,28 @@ public class DatabaseProvider {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public List<Jadwal> getAllJadwal() throws SQLException {
+        List<Jadwal> jadwalList = new ArrayList<>();
+        try (Connection connection = getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_JADWAL);
+            ResultSet resultSet = preparedStatement.executeQuery()) {
+
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                String judul = resultSet.getString("judul");
+                String tanggal = resultSet.getString("tanggal");
+                String waktu = resultSet.getString("waktu");
+                String alamat = resultSet.getString("alamat");
+                String kategori = resultSet.getString("kategori");
+                String petugas = resultSet.getString("petugas");
+                String pathGambar = resultSet.getString("pathGambar");
+
+                Jadwal jadwal = new Jadwal(id, judul, tanggal, waktu, alamat, kategori, petugas, pathGambar);
+                jadwalList.add(jadwal);
+            }
+        }
+        return jadwalList;
     }
 }

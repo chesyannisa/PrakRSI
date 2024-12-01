@@ -7,6 +7,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 import java.util.List;
 
 public class HalamanJadwalUI {
@@ -72,8 +73,16 @@ public class HalamanJadwalUI {
         List<Jadwal> jadwals = getJadwal();
 
         // Tambahkan kartu ke panel
-        for (Jadwal jadwal : jadwals) {
-            jadwalPanel.add(createJadwalCard(frame, jadwal));
+        if (jadwals != null && !jadwals.isEmpty()) {
+            for (Jadwal jadwal : jadwals) {
+                jadwalPanel.add(createJadwalCard(frame, jadwal));
+            }
+        } else {
+            JLabel noDataLabel = new JLabel("Tidak ada jadwal tersedia.");
+            noDataLabel.setFont(new Font("Nunito", Font.BOLD, 18));
+            noDataLabel.setForeground(new Color(83, 53, 74));
+            noDataLabel.setHorizontalAlignment(SwingConstants.CENTER);
+            jadwalPanel.add(noDataLabel);
         }
 
         // Scroll panel
@@ -171,7 +180,12 @@ public class HalamanJadwalUI {
 
     // Mendapatkan data jadwal dari controller
     private List<Jadwal> getJadwal() {
-        return jadwalController.getJadwal();
+        try {
+            return jadwalController.getJadwal();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ArrayList<>(); // Return an empty list if an error occurs
+        }
     }
 
     // Menampilkan pesan error

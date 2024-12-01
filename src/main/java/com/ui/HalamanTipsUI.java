@@ -1,19 +1,20 @@
 package src.main.java.com.ui;
 
+import src.main.java.com.controllers.TipsController;
+import src.main.java.com.models.Tips;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-import src.main.java.com.controllers.TipsController;
-import src.main.java.com.models.Tips;
+import java.util.List;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class HalamanTipsUI {
-    private TipsController tipsController;
+    private TipsController tipsController = new TipsController();
 
     public HalamanTipsUI() {
-        tipsController = new TipsController();
-
         // Membuat frame
         JFrame frame = new JFrame("ResikinAE: Tips & Trik Ramah Lingkungan");
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -28,23 +29,28 @@ public class HalamanTipsUI {
         // Logo di kiri atas
         ImageIcon logoIcon = new ImageIcon("src\\main\\resources\\images\\logo1.png"); // Path logo
         Image logoImage = logoIcon.getImage().getScaledInstance(110, 110, Image.SCALE_SMOOTH); // Atur ukuran logo
-        ImageIcon scaledLogoIcon = new ImageIcon(logoImage);
+        JLabel logoLabel = new JLabel(new ImageIcon(logoImage));
+        logoLabel.setHorizontalAlignment(JLabel.LEFT);
+        logoLabel.setBorder(BorderFactory.createEmptyBorder(35, 20, 10, 10)); // Padding untuk logo
 
-        // Gunakan JButton untuk logo
-        JButton logoButton = new JButton(scaledLogoIcon);
-        logoButton.setBorderPainted(false); // Hilangkan border tombol
-        logoButton.setFocusPainted(false);  // Hilangkan efek fokus
-        logoButton.setContentAreaFilled(false); // Hilangkan background tombol
-        logoButton.setCursor(new Cursor(Cursor.HAND_CURSOR)); // Ubah kursor menjadi "tangan"
+        // Menambahkan fungsi klik pada logo
+        logoLabel.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                new HalamanUtamaUI(); // Navigasi ke Halaman Utama
+                frame.dispose(); // Menutup halaman tips
+            }
 
-        // Tambahkan ActionListener untuk kembali ke halaman utama
-        logoButton.addActionListener(e -> {
-            new HalamanUtamaUI(); // Panggil halaman utama
-            frame.dispose();      // Tutup halaman saat ini
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                logoLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                logoLabel.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+            }
         });
-
-        topPanel.add(logoButton, BorderLayout.WEST); // Tambahkan tombol logo ke panel atas
-
 
         // Judul di tengah
         JLabel titleLabel = new JLabel("Tips & Trik Ramah Lingkungan");
@@ -53,6 +59,7 @@ public class HalamanTipsUI {
         titleLabel.setHorizontalAlignment(JLabel.CENTER);
         titleLabel.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 150));
 
+        topPanel.add(logoLabel, BorderLayout.WEST);
         topPanel.add(titleLabel, BorderLayout.CENTER);
 
         // Panel untuk daftar artikel (scrollable)
@@ -60,34 +67,33 @@ public class HalamanTipsUI {
         artikelPanel.setLayout(new BoxLayout(artikelPanel, BoxLayout.Y_AXIS));
         artikelPanel.setBackground(new Color(203, 215, 176));
 
-        // Tambahkan beberapa artikel ke dalam artikelPanel
-        for (int i = 1; i <= 10; i++) {
-            final int artikelId = i;
-            Tips tips = tipsController.getTipsById(artikelId);
-            if (tips != null) {
+        // Fetch data tips from controller
+        List<Tips> tipsList = tipsController.getAllTips();
+
+        // Tambahkan artikel ke panel
+        if (tipsList != null && !tipsList.isEmpty()) {
+            for (Tips tips : tipsList) {
                 artikelPanel.add(createButtonWithLabel("src\\main\\resources\\images\\tipsntrik.png", tips.getJudul(), new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        showTips(artikelId);
-                        JOptionPane.showMessageDialog(null, "Artikel dibuka!");
+                        showTips(tips.getId());
+                        frame.dispose(); 
                     }
                 }));
-                
-            } else {
-                artikelPanel.add((createButtonWithLabel("src\\main\\resources\\images\\tipsntrik.png", "Artikel tidak ditemukan", new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        showPesanError();
-                    }
-                })));
+                artikelPanel.add(Box.createRigidArea(new Dimension(0, 20))); // Jarak antar artikel
             }
-            artikelPanel.add(Box.createRigidArea(new Dimension(0, 20))); // Jarak antar artikel
+        } else {
+            artikelPanel.add(createButtonWithLabel("src\\main\\resources\\images\\tipsntrik.png", "Artikel tidak ditemukan", new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    showPesanError();
+                }
+            }));
         }
 
         // Membuat JScrollPane untuk membungkus artikelPanel
         JScrollPane scrollPane = new JScrollPane(artikelPanel);
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-        scrollPane.getVerticalScrollBar().setUnitIncrement(16); // Kecepatan scroll
 
         // Tambahkan panel ke frame
         frame.add(topPanel, BorderLayout.NORTH);
@@ -131,24 +137,14 @@ public class HalamanTipsUI {
         button.setFocusPainted(false); // Menghapus highlight ketika tombol dipilih
         button.setPreferredSize(new Dimension(width, height)); // Atur ukuran tombol sesuai gambar
         button.addActionListener(actionListener); // Tambahkan ActionListener untuk menangkap klik tombol
+
         return button;
     }
 
-    // Method untuk menampilkan tips
-    private void showTips(int tipsId) {
-        TipsController tipsController = new TipsController();
-        tipsController.tampilkanTips(tipsId);
-    }
-
-    // Method untuk menampilkan pesan error
-    private void showPesanError() {
-        tipsController.tampilkanPesanError();
-    }
-
-    // Controller untuk menampilkan halaman tips
+    // Constructor untuk menampilkan detail tips
     public HalamanTipsUI(Tips tips) {
         // Membuat frame
-        JFrame frame = new JFrame("ResikinAE: Tips & Trik Ramah Lingkungan");
+        JFrame frame = new JFrame("ResikinAE: Detail Tips");
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setLayout(new BorderLayout());
@@ -165,6 +161,25 @@ public class HalamanTipsUI {
         logoLabel.setHorizontalAlignment(JLabel.LEFT);
         logoLabel.setBorder(BorderFactory.createEmptyBorder(35, 20, 10, 10)); // Padding untuk logo
 
+        // Menambahkan fungsi klik pada logo
+        logoLabel.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                tipsController.tampilkanHalamanTips(); 
+                frame.dispose(); 
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                logoLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                logoLabel.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+            }
+        });
+
         // Judul di tengah
         JLabel titleLabel = new JLabel(tips.getJudul());
         titleLabel.setFont(new Font("Nunito", Font.BOLD, 36));
@@ -175,51 +190,53 @@ public class HalamanTipsUI {
         topPanel.add(logoLabel, BorderLayout.WEST);
         topPanel.add(titleLabel, BorderLayout.CENTER);
 
-        // Penulis artikel
-        JLabel authorLabel = new JLabel("Penulis: " + tips.getPenulis());
-        authorLabel.setFont(new Font("Nunito", Font.PLAIN, 18));
-        authorLabel.setForeground(new Color(83, 53, 74));
-        authorLabel.setHorizontalAlignment(JLabel.CENTER);
-        authorLabel.setBorder(BorderFactory.createEmptyBorder(0, 0, 20, 0));
+        // Panel untuk detail artikel
+        JPanel detailPanel = new JPanel();
+        detailPanel.setLayout(new BoxLayout(detailPanel, BoxLayout.Y_AXIS));
+        detailPanel.setBackground(new Color(203, 215, 176));
 
-        JPanel bottomPanel = new JPanel();
-        bottomPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 50, 50));
-        bottomPanel.setBackground(new Color(203, 215, 176));
+        JLabel penulisLabel = new JLabel("Penulis: " + tips.getPenulis());
+        penulisLabel.setFont(new Font("Nunito", Font.PLAIN, 18));
+        penulisLabel.setForeground(new Color(83, 53, 74));
+        penulisLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        RoundedButton backButton = new RoundedButton("Back", 30);
-        backButton.setForeground(new Color(83, 53, 74));
+        JTextArea isiArea = new JTextArea(tips.getIsi());
+        isiArea.setFont(new Font("Nunito", Font.PLAIN, 16));
+        isiArea.setForeground(new Color(83, 53, 74));
+        isiArea.setLineWrap(true);
+        isiArea.setWrapStyleWord(true);
+        isiArea.setEditable(false);
+        isiArea.setBackground(new Color(203, 215, 176));
+        isiArea.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
-        // ActionListener untuk tombol "Back"
-        backButton.addActionListener(e -> {
-            new HalamanUtamaUI(); // Ganti dengan halaman utama Anda
-            frame.dispose();
-        });
-        bottomPanel.add(backButton);
-        frame.add(bottomPanel, BorderLayout.SOUTH);
+        detailPanel.add(penulisLabel);
+        detailPanel.add(Box.createRigidArea(new Dimension(0, 10))); // Jarak kecil antara penulis dan isi
+        detailPanel.add(isiArea);
 
-        // Konten artikel
-        JTextArea contentArea = new JTextArea(tips.getIsi());
-        contentArea.setFont(new Font("Nunito", Font.PLAIN, 18));
-        contentArea.setForeground(new Color(83, 53, 74));
-        contentArea.setLineWrap(true);
-        contentArea.setWrapStyleWord(true);
-        contentArea.setEditable(false);
-        contentArea.setBackground(new Color(203, 215, 176));
-        contentArea.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+        // Membuat JScrollPane untuk membungkus detailPanel
+        JScrollPane scrollPane = new JScrollPane(detailPanel);
+        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 
-        JScrollPane contentScrollPane = new JScrollPane(contentArea);
-        contentScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-        contentScrollPane.getVerticalScrollBar().setUnitIncrement(16);
-
+        // Tambahkan panel ke frame
         frame.add(topPanel, BorderLayout.NORTH);
-        frame.add(contentScrollPane, BorderLayout.CENTER);
-        frame.add(bottomPanel, BorderLayout.SOUTH);
+        frame.add(scrollPane, BorderLayout.CENTER);
 
+        // Tampilkan frame
         frame.setVisible(true);
+    }
+
+    // Method untuk menampilkan tips
+    private void showTips(int tipsId) {
+        TipsController tipsController = new TipsController();
+        tipsController.tampilkanTips(tipsId);
+    }
+
+    // Method untuk menampilkan pesan error
+    private void showPesanError() {
+        tipsController.tampilkanPesanError();
     }
 
     public static void main(String[] args) {
         new HalamanTipsUI();
-        Tips tips = new Tips(1, "Judul Artikel", "Penulis","Isi", "url");
     }
 }

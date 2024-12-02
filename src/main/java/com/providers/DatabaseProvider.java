@@ -19,8 +19,8 @@ public class DatabaseProvider {
 
     private static final String SELECT_USER_BY_USERNAME = "SELECT * FROM user_provider WHERE username = ?";
     private static final String SELECT_USER_BY_NAMA_LENGKAP = "SELECT * FROM user_provider WHERE namaLengkap = ? AND tanggalLahir = ? AND namaIbu = ?";
-    private static final String INSERT_USER = "INSERT INTO user_provider (username, namaLengkap, tanggalLahir, namaIbu, password, role, phoneNumber) VALUES (?, ?, ?, ?, ?, ?, ?)";
-    private static final String UPDATE_USER = "UPDATE user_provider SET namaLengkap = ?, password = ?, phoneNumber = ? WHERE username = ?";
+    private static final String INSERT_USER = "INSERT INTO user_provider (username, namaLengkap, tanggalLahir, namaIbu, password, role, noTelp) VALUES (?, ?, ?, ?, ?, ?, ?)";
+    private static final String UPDATE_USER = "UPDATE user_provider SET namaLengkap = ?, password = ?, noTelp = ? WHERE username = ?";
     private static final String SELECT_ALL_JADWAL = "SELECT * FROM jadwal";
 
     public Connection getConnection() throws SQLException {
@@ -41,7 +41,7 @@ public class DatabaseProvider {
             preparedStatement.setString(4, newUser.getNamaIbu());
             preparedStatement.setString(5, newUser.getPassword());
             preparedStatement.setString(6, newUser.getRoleUser());
-            preparedStatement.setString(7, newUser.getPhoneNumber());
+            preparedStatement.setString(7, newUser.getNoTelp());
             preparedStatement.executeUpdate();
         }
     }
@@ -57,8 +57,8 @@ public class DatabaseProvider {
                     String namaIbu = resultSet.getString("namaIbu");
                     String password = resultSet.getString("password");
                     String roleUser = resultSet.getString("role");
-                    String phoneNumber = resultSet.getString("phoneNumber"); 
-                    return new User(namaLengkap, tglLahir, namaIbu, username, password, roleUser, phoneNumber);
+                    String noTelp = resultSet.getString("noTelp"); 
+                    return new User(namaLengkap, tglLahir, namaIbu, username, password, roleUser, noTelp);
                 }
             }
         }
@@ -88,7 +88,7 @@ public class DatabaseProvider {
             PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_USER)) {
             preparedStatement.setString(1, user.getNamaLengkap());
             preparedStatement.setString(2, user.getPassword());
-            preparedStatement.setString(3, user.getPhoneNumber());
+            
             preparedStatement.setString(4, user.getUsername());
             preparedStatement.executeUpdate();
         }

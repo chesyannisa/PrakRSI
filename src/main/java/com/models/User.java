@@ -9,17 +9,17 @@ public class User {
     private String username;
     private String password;
     private String roleUser;
-    private String phoneNumber;
+    private String noTelp;
 
     // Constructor
-    public User(String namaLengkap, LocalDate tglLahir, String namaIbu, String username, String password, String roleUser, String phoneNumber) {
+    public User(String namaLengkap, LocalDate tglLahir, String namaIbu, String username, String password, String roleUser, String noTelp) {
         this.namaLengkap = namaLengkap;
         this.tglLahir = tglLahir;
         this.namaIbu = namaIbu;
         this.username = username;
         this.password = password;
         this.roleUser = roleUser;
-        this.phoneNumber = phoneNumber;
+        this.noTelp = noTelp;
     }
 
     // Getter dan Setter untuk namaLengkap
@@ -76,12 +76,12 @@ public class User {
         this.roleUser = roleUser;
     }
 
-    // Getter dan Setter untuk phoneNumber
-    public String getPhoneNumber() {
-        return phoneNumber;
+    // Getter dan Setter untuk noTelp
+    public String getNoTelp() {
+        return noTelp;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void setNoTelp(String noTelp) {
+        this.noTelp = noTelp;
     }
 }

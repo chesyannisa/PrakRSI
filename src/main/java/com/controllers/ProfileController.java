@@ -2,7 +2,6 @@ package src.main.java.com.controllers;
 
 import src.main.java.com.ui.HalamanProfilUI;
 import src.main.java.com.ui.HalamanEditProfilUI;
-import src.main.java.com.models.RegisterLogin;
 import src.main.java.com.models.User;
 import src.main.java.com.providers.DatabaseProvider;
 import java.sql.SQLException;
@@ -10,16 +9,14 @@ import java.time.LocalDate;
 
 public class ProfileController {
     private DatabaseProvider databaseProvider;
-    private RegisterLogin registerLogin;
 
     public ProfileController() {
         this.databaseProvider = new DatabaseProvider();
-        this.registerLogin = new RegisterLogin();
     }
 
     // Method untuk menampilkan halaman profil
     public void tampilkanHalamanProfil() {
-        new HalamanProfilUI(registerLogin);
+        new HalamanProfilUI();
     }
 
     // Method untuk menampilkan halaman edit profil

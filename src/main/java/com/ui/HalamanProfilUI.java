@@ -4,15 +4,11 @@ import javax.swing.*;
 import java.awt.*;
 
 import src.main.java.com.controllers.ProfileController;
-import src.main.java.com.models.RegisterLogin;
 import src.main.java.com.models.User;
 
 public class HalamanProfilUI {
-    private RegisterLogin registerLogin;
-    
-    public HalamanProfilUI(RegisterLogin registerLogin) {
-        this.registerLogin = registerLogin;
 
+    public HalamanProfilUI() {
         // Membuat frame
         JFrame frame = new JFrame("ResikinAE: Profile");
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -69,13 +65,12 @@ public class HalamanProfilUI {
 
         // Tambahkan data pengguna
         ProfileController profileController = new ProfileController();
-        User currentUser = registerLogin.getUserData();
-        User user = profileController.getUserData(currentUser.getUsername());
+        User user = profileController.getUserData("username"); // Replace with actual username
         if (user != null) {
             addUserInfoRow(userInfoPanel, "Nama Lengkap     :", user.getNamaLengkap());
             addUserInfoRow(userInfoPanel, "Username             :", user.getUsername());
             addUserInfoRow(userInfoPanel, "Kata Sandi            :", "********");
-            addUserInfoRow(userInfoPanel, "Nomor Telepon    :", user.getNoTelp());
+            addUserInfoRow(userInfoPanel, "Nomor Telepon    :", "-");
         }
 
         // Bagian bawah (Tombol "Edit Profil" di tengah bawah)
@@ -87,6 +82,7 @@ public class HalamanProfilUI {
         editButton.setForeground(new Color(83, 53, 74));
         editButton.addActionListener(e -> {
             showHalamanEditProfil();
+            frame.dispose();
         });
 
         bottomPanel.add(editButton);
@@ -132,5 +128,9 @@ public class HalamanProfilUI {
     private void showHalamanEditProfil() {
         ProfileController profilController = new ProfileController();
         profilController.tampilkanHalamanEditProfil();
+    }
+
+    public static void main(String[] args) {
+        new HalamanProfilUI();
     }
 }

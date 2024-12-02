@@ -3,7 +3,6 @@ package src.main.java.com.ui;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
-import java.net.URI;
 import java.util.List;
 
 import src.main.java.com.controllers.TipsController;

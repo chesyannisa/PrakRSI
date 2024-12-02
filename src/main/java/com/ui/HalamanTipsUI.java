@@ -3,7 +3,6 @@ package src.main.java.com.ui;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 import java.net.URI;
 import src.main.java.com.controllers.TipsController;
 import src.main.java.com.models.Tips;
@@ -59,7 +58,7 @@ public class HalamanTipsUI {
             Tips tips = tipsController.getTipsById(artikelId);
             if (tips != null) {
                 // Menggunakan gambar dari parameter 'gambar' di kelas Tips pp
-                artikelPanel.add(createButtonWithLabel(tips.getGambar(), tips.getJudul(), e -> openURL(tips.getUrl())));
+                artikelPanel.add(artikelPanel.add(createButtonWithLabel(tips.getGambar(), tips.getJudul(), e -> bukaTips(tips.getUrl()))));
             } else {
                 artikelPanel.add(createButtonWithLabel("src\\main\\resources\\images\\tipsntrik.png", "Artikel belum ada", e -> tipsController.tampilkanPesanError()));
             }
@@ -111,13 +110,8 @@ public class HalamanTipsUI {
         return button;
     }
 
-    private void openURL(String url) {
-        try {
-            Desktop.getDesktop().browse(new URI(url));
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Gagal membuka URL: " + e.getMessage());
-        }
-
+    private void bukaTips(String url) {
+        tipsController.openURL(url);
     }
 
     public static void main(String[] args) {

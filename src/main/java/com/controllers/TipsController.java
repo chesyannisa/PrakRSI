@@ -1,31 +1,34 @@
 package src.main.java.com.controllers;
 
+import java.net.URI;
+import java.awt.Desktop;
+
 import javax.swing.JOptionPane;
 import src.main.java.com.models.Tips;
-import src.main.java.com.providers.DatabaseProvider;
+import src.main.java.com.providers.TipsProvider;
 import src.main.java.com.ui.HalamanTipsUI;
 
 public class TipsController {
-    private DatabaseProvider databaseProvider;
+    TipsProvider tipsProvider;
 
     public TipsController() {
-        this.databaseProvider = new DatabaseProvider();
+        this.tipsProvider = new TipsProvider();
     }
 
     public void tampilkanHalamanTips() {
         new HalamanTipsUI();
     }
 
-    public void tampilkanTips(int tipsId) {
-        Tips tips = getTipsById(tipsId);
-        new HalamanTipsUI();
+    public void openURL(String url) {
+        try {
+            Desktop.getDesktop().browse(new URI(url));
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Gagal membuka URL: " + e.getMessage());
+        }
     }
 
     public Tips getTipsById(int id) {
-        // Contoh data
-        if (id == 1) return new Tips(1, "Memulai Gaya Hidup Ramah Lingkungan dan Manfaatnya", "Rheem", "src\\main\\resources\\images\\art1.png", "https://rheem.id/blog/gaya-hidup-ramah-lingkungan/");
-        if (id == 2) return new Tips(2, "Mari Kelola Sampah Dengan Bijak Mulai Hari Ini", "Citarum Harum Juara", "src\\main\\resources\\images\\art2.png", "https://citarumharum.jabarprov.go.id/mari-kelola-sampah-dengan-bijak-mulai-hari-ini/");
-        return null;
+        return tipsProvider.getTipsById(id);
     }
 
     public void tampilkanPesanError() {

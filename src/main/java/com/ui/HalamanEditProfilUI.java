@@ -3,12 +3,20 @@ package src.main.java.com.ui;
 import javax.swing.*;
 
 import src.main.java.com.controllers.ProfileController;
+import src.main.java.com.models.User;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
+import java.time.LocalDate;
 
 public class HalamanEditProfilUI {
+
+    private JTextField nameField;
+    private JTextField usernameField;
+    private JTextField passwordField;
+    private JTextField phoneField;
 
     public HalamanEditProfilUI() {
         JFrame frame = new JFrame("ResikinAE: Edit Profile");
@@ -48,7 +56,7 @@ public class HalamanEditProfilUI {
         gbc.fill = GridBagConstraints.HORIZONTAL;
 
         // Input Nama Lengkap
-        gbc.gridx = 0;
+        nameField = new JTextField(20);
         gbc.gridy = 0;
         formPanel.add(new JLabel("Nama Lengkap:"), gbc);
 
@@ -57,7 +65,7 @@ public class HalamanEditProfilUI {
         formPanel.add(nameField, gbc);
 
         // Input Username
-        gbc.gridx = 0;
+        usernameField = new JTextField(20);
         gbc.gridy = 1;
         formPanel.add(new JLabel("Username:"), gbc);
 
@@ -66,7 +74,7 @@ public class HalamanEditProfilUI {
         formPanel.add(usernameField, gbc);
 
         // Input Kata Sandi
-        gbc.gridx = 0;
+        passwordField = new JTextField(20);
         gbc.gridy = 2;
         formPanel.add(new JLabel("Kata Sandi:"), gbc);
 
@@ -75,7 +83,7 @@ public class HalamanEditProfilUI {
         formPanel.add(passwordField, gbc);
 
         // Input Nomor Telepon
-        gbc.gridx = 0;
+        phoneField = new JTextField(20);
         gbc.gridy = 3;
         formPanel.add(new JLabel("No Telepon:"), gbc);
 
@@ -142,9 +150,26 @@ public class HalamanEditProfilUI {
 
     // Metode SimpanProfil
     private void SimpanProfil() {
+        // Collect data from form fields
+        String namaLengkap = nameField.getText();
+        String username = usernameField.getText();
+        String password = passwordField.getText();
+        String noTelp = phoneField.getText();
+
+        // Create a User object with the collected data
+        User updatedUser = new User(namaLengkap, LocalDate.now(), "namaIbu", username, password, "roleUser", noTelp);
+
+        // Call the controller to save the data
         ProfileController profilController = new ProfileController();
-        profilController.SaveDataChange();
+        try {
+            profilController.updateUser(updatedUser);
+            JOptionPane.showMessageDialog(null, "Profil berhasil disimpan", "Sukses", JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            pesanError();
+        }
     }
+
 
     // Menampilkan pesan error
     public static void pesanError() {

@@ -4,6 +4,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.net.URI;
+import java.util.List;
+
 import src.main.java.com.controllers.TipsController;
 import src.main.java.com.models.Tips;
 
@@ -53,16 +55,11 @@ public class HalamanTipsUI {
         artikelPanel.setLayout(new BoxLayout(artikelPanel, BoxLayout.Y_AXIS));
         artikelPanel.setBackground(new Color(203, 215, 176));
 
-        for (int i = 1; i <= 10; i++) {
-            final int artikelId = i;
-            Tips tips = tipsController.getTipsById(artikelId);
-            if (tips != null) {
-                // Menggunakan gambar dari parameter 'gambar' di kelas Tips pp
-                artikelPanel.add(artikelPanel.add(createButtonWithLabel(tips.getGambar(), tips.getJudul(), e -> bukaTips(tips.getUrl()))));
-            } else {
-                artikelPanel.add(createButtonWithLabel("src\\main\\resources\\images\\tipsntrik.png", "Artikel belum ada", e -> tipsController.tampilkanPesanError()));
-            }
-            artikelPanel.add(Box.createRigidArea(new Dimension(0, 20)));
+        List<Tips> tipsList = tipsController.getAllTips();
+
+        for (Tips tips : tipsList) {
+            JPanel panel = createButtonWithLabel(tips.getGambar(), tips.getJudul(), e -> bukaTips(tips.getUrl()));
+            artikelPanel.add(panel);
         }
         
 

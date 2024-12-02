@@ -2,6 +2,7 @@ package src.main.java.com.controllers;
 
 import java.net.URI;
 import java.awt.Desktop;
+import java.util.List;
 
 import javax.swing.JOptionPane;
 import src.main.java.com.models.Tips;
@@ -29,6 +30,10 @@ public class TipsController {
 
     public Tips getTipsById(int id) {
         return tipsProvider.getTipsById(id);
+    }
+
+    public List<Tips> getAllTips() {
+        return tipsProvider.getAllTips();
     }
 
     public void tampilkanPesanError() {

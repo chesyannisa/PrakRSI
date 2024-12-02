@@ -88,7 +88,7 @@ public class DatabaseProvider {
             PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_USER)) {
             preparedStatement.setString(1, user.getNamaLengkap());
             preparedStatement.setString(2, user.getPassword());
-            
+            preparedStatement.setString(3, user.getNoTelp()); // Add this line
             preparedStatement.setString(4, user.getUsername());
             preparedStatement.executeUpdate();
         }

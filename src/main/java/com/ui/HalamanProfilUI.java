@@ -4,13 +4,14 @@ import javax.swing.*;
 import java.awt.*;
 
 import src.main.java.com.controllers.ProfileController;
+import src.main.java.com.models.RegisterLogin;
 import src.main.java.com.models.User;
 
 public class HalamanProfilUI {
-    private String username;
-
-    public HalamanProfilUI(String username) {
-        this.username = username;
+    private RegisterLogin registerLogin;
+    
+    public HalamanProfilUI(RegisterLogin registerLogin) {
+        this.registerLogin = registerLogin;
 
         // Membuat frame
         JFrame frame = new JFrame("ResikinAE: Profile");
@@ -68,12 +69,13 @@ public class HalamanProfilUI {
 
         // Tambahkan data pengguna
         ProfileController profileController = new ProfileController();
-        User user = profileController.getUserData("username"); // Replace with actual username
+        User currentUser = registerLogin.getUserData();
+        User user = profileController.getUserData(currentUser.getUsername());
         if (user != null) {
             addUserInfoRow(userInfoPanel, "Nama Lengkap     :", user.getNamaLengkap());
             addUserInfoRow(userInfoPanel, "Username             :", user.getUsername());
             addUserInfoRow(userInfoPanel, "Kata Sandi            :", "********");
-            addUserInfoRow(userInfoPanel, "Nomor Telepon    :", "-");
+            addUserInfoRow(userInfoPanel, "Nomor Telepon    :", user.getNoTelp());
         }
 
         // Bagian bawah (Tombol "Edit Profil" di tengah bawah)
@@ -129,6 +131,6 @@ public class HalamanProfilUI {
     // Metode untuk menampilkan halaman edit profil
     private void showHalamanEditProfil() {
         ProfileController profilController = new ProfileController();
-        profilController.tampilkanHalamanEditProfil(username);
+        profilController.tampilkanHalamanEditProfil();
     }
 }

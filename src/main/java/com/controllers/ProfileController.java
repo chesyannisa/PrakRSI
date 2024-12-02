@@ -1,32 +1,27 @@
 package src.main.java.com.controllers;
 
-import java.sql.SQLException;
-
 import src.main.java.com.ui.HalamanProfilUI;
 import src.main.java.com.ui.HalamanEditProfilUI;
 import src.main.java.com.models.User;
 import src.main.java.com.providers.DatabaseProvider;
-import src.main.java.com.models.RegisterLogin;
-
+import java.sql.SQLException;
+import java.time.LocalDate;
 
 public class ProfileController {
     private DatabaseProvider databaseProvider;
-    private RegisterLogin registerLogin;
 
     public ProfileController() {
         this.databaseProvider = new DatabaseProvider();
-        this.registerLogin = new RegisterLogin();
     }
 
     // Method untuk menampilkan halaman profil
     public void tampilkanHalamanProfil() {
-        User loggedInUser = registerLogin.getUserData();
-        new HalamanProfilUI(loggedInUser.getUsername());
+        new HalamanProfilUI();
     }
 
     // Method untuk menampilkan halaman edit profil
-    public void tampilkanHalamanEditProfil(String username) {
-        new HalamanEditProfilUI(username);
+    public void tampilkanHalamanEditProfil() {
+        new HalamanEditProfilUI();
     }
 
     // Method untuk mendapatkan data user dari database

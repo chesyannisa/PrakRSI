@@ -16,7 +16,7 @@ public class HalamanEditProfilUI {
     private JTextField passwordField;
     private JTextField phoneField;
 
-    public HalamanEditProfilUI(String username) {
+    public HalamanEditProfilUI() {
         JFrame frame = new JFrame("ResikinAE: Edit Profile");
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -91,7 +91,7 @@ public class HalamanEditProfilUI {
 
         // Fetch and set user data
         ProfileController profileController = new ProfileController();
-        User user = profileController.getUserData(username);
+        User user = profileController.getUserData(usernameField.getText()); 
         if (user != null) {
             nameField.setText(user.getNamaLengkap());
             usernameField.setText(user.getUsername());

@@ -63,15 +63,8 @@ public class HalamanProfilUI {
         userInfoPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         userInfoPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        // Tambahkan data pengguna
-        ProfileController profileController = new ProfileController();
-        User user = profileController.getUserData("username"); // Replace with actual username
-        if (user != null) {
-            addUserInfoRow(userInfoPanel, "Nama Lengkap     :", user.getNamaLengkap());
-            addUserInfoRow(userInfoPanel, "Username             :", user.getUsername());
-            addUserInfoRow(userInfoPanel, "Kata Sandi            :", "********");
-            addUserInfoRow(userInfoPanel, "Nomor Telepon    :", "-");
-        }
+        // Fetch and display user data
+        // fetchAndDisplayUserData(userInfoPanel);
 
         // Bagian bawah (Tombol "Edit Profil" di tengah bawah)
         JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
@@ -129,6 +122,19 @@ public class HalamanProfilUI {
         ProfileController profilController = new ProfileController();
         profilController.tampilkanHalamanEditProfil();
     }
+
+    // private void fetchAndDisplayUserData(JPanel userInfoPanel) {
+    //     ProfileController profileController = new ProfileController();
+        
+    //     User user = profileController.getUserData(username);
+
+    //     if (user != null) {
+    //         addUserInfoRow(userInfoPanel, "Nama Lengkap:", user.getNamaLengkap());
+    //         addUserInfoRow(userInfoPanel, "Tanggal Lahir:", user.getTglLahir().toString());
+    //         addUserInfoRow(userInfoPanel, "Nama Ibu:", user.getNamaIbu());
+    //         addUserInfoRow(userInfoPanel, "Username:", user.getUsername());
+    //     }
+    // }
 
     public static void main(String[] args) {
         new HalamanProfilUI();

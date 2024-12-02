@@ -109,8 +109,4 @@ public class HalamanTipsUI {
     private void bukaTips(String url) {
         tipsController.openURL(url);
     }
-
-    public static void main(String[] args) {
-        new HalamanTipsUI();
-    }
 }

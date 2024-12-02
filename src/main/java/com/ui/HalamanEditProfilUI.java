@@ -150,8 +150,4 @@ public class HalamanEditProfilUI {
     public static void pesanError() {
         JOptionPane.showMessageDialog(null, "Terjadi kesalahan saat menyimpan data", "Error", JOptionPane.ERROR_MESSAGE);
     }
-
-    public static void main(String[] args) {
-        new HalamanEditProfilUI();
-    }
 }

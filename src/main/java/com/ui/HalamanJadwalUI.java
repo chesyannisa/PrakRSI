@@ -192,8 +192,4 @@ public class HalamanJadwalUI {
     public static void showPesanError() {
         JOptionPane.showMessageDialog(null, "Terjadi kesalahan saat mengambil data dari database", "Error", JOptionPane.ERROR_MESSAGE);
     }
-
-    public static void main(String[] args) {
-        new HalamanJadwalUI();
-    }
 }

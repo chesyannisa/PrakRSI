@@ -20,9 +20,8 @@ public class DatabaseProvider {
     private static final String SELECT_USER_BY_USERNAME = "SELECT * FROM user_provider WHERE username = ?";
     private static final String SELECT_USER_BY_NAMA_LENGKAP = "SELECT * FROM user_provider WHERE namaLengkap = ? AND tanggalLahir = ? AND namaIbu = ?";
     private static final String INSERT_USER = "INSERT INTO user_provider (username, namaLengkap, tanggalLahir, namaIbu, password, role, noTelp) VALUES (?, ?, ?, ?, ?, ?, ?)";
-    private static final String UPDATE_USER = "UPDATE user_provider SET namaLengkap = ?, password = ?, noTelp = ? WHERE username = ?";
+    private static final String UPDATE_USER = "UPDATE user_provider SET " + "namaLengkap = COALESCE(?, namaLengkap), " + "password = COALESCE(?, password), " + "noTelp = COALESCE(?, noTelp) " + "WHERE username = ?";
     private static final String SELECT_ALL_JADWAL = "SELECT * FROM jadwal";
-
     public Connection getConnection() throws SQLException {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");

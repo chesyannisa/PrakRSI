@@ -38,15 +38,4 @@ public class ProfileController {
     public void updateUser(User user) throws SQLException {
         databaseProvider.updateUser(user);
     }
-
-    public void SaveDataChange() {
-        // Assume you have the updated user data
-        User updatedUser = new User("namaLengkap", LocalDate.now(), "namaIbu", "username", "password", "roleUser", "phoneNumber");
-        try {
-            updateUser(updatedUser);
-        } catch (SQLException e) {
-            e.printStackTrace();
-            HalamanEditProfilUI.pesanError();
-        }
-    }
 }

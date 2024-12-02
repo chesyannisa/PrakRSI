@@ -1,18 +1,22 @@
 package src.main.java.com.ui;
 
 import javax.swing.*;
-
-import src.main.java.com.controllers.ProfileController;
-import src.main.java.com.models.User;
-
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.time.LocalDate;
 
+import src.main.java.com.controllers.ProfileController;
+import src.main.java.com.models.User;
+
 public class HalamanEditProfilUI {
-    public HalamanEditProfilUI() {
+    private JTextField nameField;
+    private JTextField usernameField;
+    private JTextField passwordField;
+    private JTextField phoneField;
+
+    public HalamanEditProfilUI(String username) {
         JFrame frame = new JFrame("ResikinAE: Edit Profile");
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -55,7 +59,7 @@ public class HalamanEditProfilUI {
         formPanel.add(new JLabel("Nama Lengkap:"), gbc);
 
         gbc.gridx = 1;
-        JTextField nameField = new JTextField(20);
+        nameField = new JTextField(20);
         formPanel.add(nameField, gbc);
 
         // Input Username
@@ -64,7 +68,7 @@ public class HalamanEditProfilUI {
         formPanel.add(new JLabel("Username:"), gbc);
 
         gbc.gridx = 1;
-        JTextField usernameField = new JTextField(20);
+        usernameField = new JTextField(20);
         formPanel.add(usernameField, gbc);
 
         // Input Kata Sandi
@@ -73,7 +77,7 @@ public class HalamanEditProfilUI {
         formPanel.add(new JLabel("Kata Sandi:"), gbc);
 
         gbc.gridx = 1;
-        JTextField passwordField = new JTextField(20);
+        passwordField = new JTextField(20);
         formPanel.add(passwordField, gbc);
 
         // Input Nomor Telepon
@@ -82,8 +86,18 @@ public class HalamanEditProfilUI {
         formPanel.add(new JLabel("No Telepon:"), gbc);
 
         gbc.gridx = 1;
-        JTextField phoneField = new JTextField(20);
+        phoneField = new JTextField(20);
         formPanel.add(phoneField, gbc);
+
+        // Fetch and set user data
+        ProfileController profileController = new ProfileController();
+        User user = profileController.getUserData(username);
+        if (user != null) {
+            nameField.setText(user.getNamaLengkap());
+            usernameField.setText(user.getUsername());
+            passwordField.setText(user.getPassword());
+            phoneField.setText(user.getNoTelp());
+        }
 
         // Panel untuk Tombol
         JPanel ButtonPanel = new JPanel(new GridBagLayout());
@@ -125,19 +139,18 @@ public class HalamanEditProfilUI {
         cancelButton.setPreferredSize(buttonSize); // Ukuran seragam
         ButtonPanel.add(cancelButton, gbcButton);
 
-        // Menambahkan panel ke frame
-        frame.add(formPanel, BorderLayout.CENTER);
-        frame.add(ButtonPanel, BorderLayout.SOUTH);
-
         // Aksi tombol Back
         cancelButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new HalamanProfilUI(); // Kembali ke halaman profil
+                new HalamanProfilUI();
                 frame.dispose();
             }
         });
 
+        // Menambahkan panel ke frame
+        frame.add(formPanel, BorderLayout.CENTER);
+        frame.add(ButtonPanel, BorderLayout.SOUTH);
         frame.add(topPanel, BorderLayout.NORTH);
         frame.setVisible(true);
     }
@@ -155,7 +168,6 @@ public class HalamanEditProfilUI {
             pesanError();
         }
     }
-
 
     // Menampilkan pesan error
     public static void pesanError() {

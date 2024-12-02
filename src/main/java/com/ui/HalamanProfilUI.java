@@ -7,8 +7,11 @@ import src.main.java.com.controllers.ProfileController;
 import src.main.java.com.models.User;
 
 public class HalamanProfilUI {
+    private String username;
 
-    public HalamanProfilUI() {
+    public HalamanProfilUI(String username) {
+        this.username = username;
+
         // Membuat frame
         JFrame frame = new JFrame("ResikinAE: Profile");
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -82,7 +85,6 @@ public class HalamanProfilUI {
         editButton.setForeground(new Color(83, 53, 74));
         editButton.addActionListener(e -> {
             showHalamanEditProfil();
-            frame.dispose();
         });
 
         bottomPanel.add(editButton);
@@ -127,10 +129,6 @@ public class HalamanProfilUI {
     // Metode untuk menampilkan halaman edit profil
     private void showHalamanEditProfil() {
         ProfileController profilController = new ProfileController();
-        profilController.tampilkanHalamanEditProfil();
-    }
-
-    public static void main(String[] args) {
-        new HalamanProfilUI();
+        profilController.tampilkanHalamanEditProfil(username);
     }
 }

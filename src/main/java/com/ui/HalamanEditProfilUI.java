@@ -143,7 +143,6 @@ public class HalamanEditProfilUI {
         cancelButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new HalamanProfilUI();
                 frame.dispose();
             }
         });

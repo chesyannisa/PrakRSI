@@ -11,19 +11,24 @@ import src.main.java.com.ui.LupaPasswordUI;
 
 public class LoginController {
     private DatabaseProvider databaseProvider;
+    private RegisterLogin registerLogin;
 
     public LoginController() {
         this.databaseProvider = new DatabaseProvider();
+        this.registerLogin = new RegisterLogin();
     }
 
     public void tampilkanHalamanLogin() {
-        RegisterLogin registerLogin = new RegisterLogin();
         new HalamanLoginUI(registerLogin);
     }
 
     public boolean checkUsernamePassword(String username, String password) {
         try {
             User user = databaseProvider.getUserByUsername(username);
+            if (user != null && user.getPassword().equals(password)) {
+                registerLogin.setUserData(user); 
+                return true;
+            }
             return user != null && user.getPassword().equals(password);
         } catch (SQLException e) {
             e.printStackTrace();

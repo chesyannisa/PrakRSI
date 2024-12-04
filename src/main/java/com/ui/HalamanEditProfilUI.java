@@ -143,6 +143,7 @@ public class HalamanEditProfilUI {
         cancelButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                showHalamanProfil();
                 frame.dispose();
             }
         });
@@ -172,4 +173,10 @@ public class HalamanEditProfilUI {
     public static void pesanError() {
         JOptionPane.showMessageDialog(null, "Terjadi kesalahan saat menyimpan data", "Error", JOptionPane.ERROR_MESSAGE);
     }
+
+    private void showHalamanProfil() {
+        ProfileController profilController = new ProfileController();
+        profilController.tampilkanHalamanProfil();
+    }
+
 }

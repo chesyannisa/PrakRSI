@@ -30,7 +30,7 @@ public class HalamanJadwalUI {
 
         // Logo di kiri atas
         ImageIcon logoIcon = new ImageIcon("src\\main\\resources\\images\\logo1.png");
-        Image logoImage = logoIcon.getImage().getScaledInstance(80, 80, Image.SCALE_SMOOTH);
+        Image logoImage = logoIcon.getImage().getScaledInstance(140, 140, Image.SCALE_SMOOTH);
         JLabel logoLabel = new JLabel(new ImageIcon(logoImage));
         logoLabel.setHorizontalAlignment(JLabel.LEFT);
         logoLabel.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 10));

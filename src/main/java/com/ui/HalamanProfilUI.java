@@ -64,13 +64,13 @@ public class HalamanProfilUI {
         userInfoPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         // Fetch and display user data
-        // fetchAndDisplayUserData(userInfoPanel);
+        fetchAndDisplayUserData(userInfoPanel);
 
         // Bagian bawah (Tombol "Edit Profil" di tengah bawah)
         JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         bottomPanel.setBackground(new Color(203, 215, 176));
         bottomPanel.setPreferredSize(new Dimension(0, 100));
-    
+
         RoundedButton editButton = new RoundedButton("Edit Profil", 30);
         editButton.setForeground(new Color(83, 53, 74));
         editButton.addActionListener(e -> {
@@ -123,18 +123,22 @@ public class HalamanProfilUI {
         profilController.tampilkanHalamanEditProfil();
     }
 
-    // private void fetchAndDisplayUserData(JPanel userInfoPanel) {
-    //     ProfileController profileController = new ProfileController();
-        
-    //     User user = profileController.getUserData(username);
+    private void fetchAndDisplayUserData(JPanel userInfoPanel) {
+        ProfileController profileController = new ProfileController();
+        User user = profileController.getUserData("testUsername"); // Ganti dengan username dari sesi login
 
-    //     if (user != null) {
-    //         addUserInfoRow(userInfoPanel, "Nama Lengkap:", user.getNamaLengkap());
-    //         addUserInfoRow(userInfoPanel, "Tanggal Lahir:", user.getTglLahir().toString());
-    //         addUserInfoRow(userInfoPanel, "Nama Ibu:", user.getNamaIbu());
-    //         addUserInfoRow(userInfoPanel, "Username:", user.getUsername());
-    //     }
-    // }
+        if (user != null) {
+            addUserInfoRow(userInfoPanel, "Nama Lengkap:", user.getNamaLengkap() != null ? user.getNamaLengkap() : "-");
+            addUserInfoRow(userInfoPanel, "Username:", user.getUsername() != null ? user.getUsername() : "-");
+            addUserInfoRow(userInfoPanel, "Kata Sandi:", user.getPassword() != null ? user.getPassword() : "-");
+            addUserInfoRow(userInfoPanel, "No. Telepon:", user.getNoTelp() != null ? user.getNoTelp() : "-");
+        } else {
+            addUserInfoRow(userInfoPanel, "Nama Lengkap:", "-");
+            addUserInfoRow(userInfoPanel, "Username:", "-");
+            addUserInfoRow(userInfoPanel, "Kata Sandi:", "-");
+            addUserInfoRow(userInfoPanel, "No. Telepon:", "-");
+        }
+    }
 
     public static void main(String[] args) {
         new HalamanProfilUI();
